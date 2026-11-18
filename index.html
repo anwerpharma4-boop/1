@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>رياضياتي الممتعة 🌈 الأول الابتدائي</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff5fa2;--orange:#ff9f1c;--yellow:#ffd60a;--teal:#2ec4b6;--lime:#5cc93f;--blue:#3a86ff;--purple:#8338ec;--red:#ff4d6d;--ink:#3d2c5e}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{font-family:'Baloo Bhaijaan 2','Tajawal','Segoe UI',Tahoma,sans-serif;color:var(--ink);min-height:100vh;
+ background:linear-gradient(180deg,#a9d6ff 0%,#dff3ff 55%,#c9f5c0 100%);overflow-x:hidden;user-select:none}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.cloud{position:absolute;background:#fff;border-radius:60px;opacity:.85;animation:drift 40s linear infinite}
+.cloud::before,.cloud::after{content:'';position:absolute;background:#fff;border-radius:50%}
+.cloud::before{width:55%;height:150%;top:-60%;right:15%}
+.cloud::after{width:40%;height:120%;top:-40%;left:12%}
+@keyframes drift{from{transform:translateX(-120vw)}to{transform:translateX(120vw)}}
+.sun{position:absolute;top:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#fff7a8,#ffd60a 60%,#ffb703);box-shadow:0 0 60px #ffd60a}
+.floaty{position:absolute;font-size:28px;opacity:.5;animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-18px) rotate(10deg)}}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;
+ background:linear-gradient(90deg,var(--purple),var(--pink),var(--orange));color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.15);border-radius:0 0 26px 26px}
+.topbar h1{margin:0;font-size:22px;font-weight:800;text-shadow:0 2px 0 rgba(0,0,0,.2)}
+.iconbtn{border:none;background:rgba(255,255,255,.25);color:#fff;font-size:22px;width:46px;height:46px;border-radius:50%;cursor:pointer;font-family:inherit}
+.starbox{background:#fff;color:var(--orange);font-weight:800;border-radius:30px;padding:4px 14px;font-size:20px;box-shadow:inset 0 -3px 0 #ffe08a}
+.screen{display:none;position:relative;z-index:1;padding:16px;max-width:920px;margin:auto;padding-bottom:60px}
+.screen.active{display:block;animation:popin .4s ease}
+@keyframes popin{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}
+.hello{text-align:center;margin:8px 0 18px}
+.hello .big{font-size:32px;font-weight:800;color:var(--purple);text-shadow:2px 2px 0 #fff}
+.hello p{margin:0;font-size:19px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.card{border:none;border-radius:28px;padding:16px 8px;color:#fff;cursor:pointer;font-family:inherit;text-align:center;
+ box-shadow:0 8px 0 rgba(0,0,0,.15),0 12px 24px rgba(0,0,0,.12);transition:transform .15s}
+.card:active{transform:translateY(6px);box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.card:hover{transform:translateY(-4px) rotate(-1deg)}
+.card .e{font-size:48px;display:block;filter:drop-shadow(0 4px 2px rgba(0,0,0,.15))}
+.card .t{font-size:20px;font-weight:800;display:block}
+.card .s{font-size:14px;opacity:.95}
+.c1{background:linear-gradient(135deg,#ff9a9e,#ff5fa2)}.c2{background:linear-gradient(135deg,#43e97b,#2ec4b6)}
+.c3{background:linear-gradient(135deg,#ffb347,#ff7b00)}.c4{background:linear-gradient(135deg,#6fb1ff,#3a86ff)}
+.c5{background:linear-gradient(135deg,#c084fc,#8338ec)}.c6{background:linear-gradient(135deg,#ffd60a,#ffb703);color:#5a3d00}
+.c7{background:linear-gradient(135deg,#7f8cff,#5b5bd6)}.c8{background:linear-gradient(135deg,#ff7aa8,#ff4d6d)}
+.c9{background:linear-gradient(135deg,#4dd4ff,#00a6d6)}.c10{background:linear-gradient(135deg,#a3e635,#4d9e1a)}
+.panel{background:rgba(255,255,255,.93);border-radius:28px;padding:18px;box-shadow:0 10px 26px rgba(61,44,94,.13);margin-bottom:16px;border:4px solid #fff}
+.ttl{font-size:26px;font-weight:800;text-align:center;margin:0 0 8px;color:var(--purple)}
+.instr{text-align:center;font-size:23px;font-weight:700;margin:4px 0 12px}
+.muted{font-size:15px;opacity:.75;text-align:center;margin:4px 0}
+/* المجموعات */
+.group{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-content:center;background:#fffdf3;border-radius:22px;padding:10px;min-height:86px;min-width:110px;max-width:240px;border:4px dashed #ffd27a}
+.obj{font-size:30px;line-height:1.15;display:inline-block;position:relative;transition:all .3s}
+.pop{animation:objIn .35s ease backwards}
+@keyframes objIn{from{transform:scale(0) rotate(-40deg)}}
+.obj.out{opacity:.35;filter:grayscale(1)}
+.obj.out::after{content:'✖';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#ff2d55;font-size:34px}
+.obj.ghost{width:34px;height:34px;border:3px dashed var(--blue);border-radius:50%;margin:2px;background:#e7f1ff}
+.obj.hl{transform:scale(1.35);filter:drop-shadow(0 0 8px var(--yellow))}
+.obj .badge{position:absolute;top:-12px;right:-6px;background:var(--purple);color:#fff;border-radius:12px;font-size:14px;padding:0 6px;font-weight:800}
+/* قطع العشرات والآحاد */
+.blk{display:flex;gap:5px;align-items:flex-end;justify-content:center;flex-wrap:wrap;background:#fffdf3;border:4px dashed #ffd27a;border-radius:22px;padding:10px;min-height:96px;min-width:100px;max-width:330px;direction:ltr}
+.rod{width:15px;height:122px;border-radius:4px;border:2px solid #2a64c4;background:repeating-linear-gradient(0deg,#3a86ff 0 10px,#cfe1ff 10px 12px)}
+.cubes{display:grid;grid-template-columns:repeat(3,16px);gap:3px;align-self:flex-end}
+.cube{width:16px;height:16px;background:#ff9f1c;border:2px solid #d97a00;border-radius:3px}
+.rod.x,.cube.x{opacity:.22;outline:3px solid #ff2d55}
+.row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;align-items:center;gap:6px}
+.numtag{font-size:38px;font-weight:800;color:#fff;background:var(--blue);border-radius:18px;min-width:64px;text-align:center;padding:0 10px;box-shadow:0 5px 0 rgba(0,0,0,.15)}
+.opsign{font-size:46px;font-weight:800;color:var(--pink)}
+.sym{font-size:56px;font-weight:800;width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff3b0;border:4px dashed var(--orange);color:var(--orange)}
+.eq{display:flex;gap:10px;align-items:center;justify-content:center;font-size:44px;font-weight:800;margin:14px 0;flex-wrap:wrap}
+.eq .b{min-width:72px;height:72px;padding:0 10px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #e3d9ff}
+.eq .o{color:var(--pink)}
+.q{background:#fff3b0!important;border:4px dashed var(--orange)!important;color:var(--orange)!important}
+.done{border-style:solid!important;border-color:var(--lime)!important;background:#eaffdf!important;color:#2b9a16!important;animation:boing .5s}
+@keyframes boing{30%{transform:scale(1.3)}60%{transform:scale(.9)}}
+/* قطار الأعداد */
+.train{display:flex;gap:8px;align-items:flex-end;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.loco{font-size:54px;line-height:1}
+.car{min-width:74px;height:64px;border-radius:16px 16px 8px 8px;background:var(--teal);color:#fff;font-size:34px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 8px;box-shadow:0 6px 0 rgba(0,0,0,.15);border:4px solid transparent}
+/* جدول المنازل */
+.pvt{display:grid;grid-template-columns:repeat(2,96px);gap:5px;direction:ltr;justify-content:center;margin:10px auto}
+.pvh{background:var(--purple);color:#fff;text-align:center;border-radius:10px;font-weight:800;font-size:16px;padding:4px}
+.pvh.o{background:var(--orange)}
+.pv{background:#fff;height:72px;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:14px;box-shadow:0 4px 0 #e3d9ff;border:4px solid transparent}
+.bignum{font-size:90px;font-weight:800;line-height:1;color:var(--pink);text-shadow:4px 4px 0 #ffd6e8}
+.word{font-size:26px;font-weight:800;color:var(--purple)}
+/* لوحة المئة */
+.hc{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;direction:rtl;max-width:540px;margin:10px auto}
+.hc div{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:800;font-size:15px;cursor:pointer;transition:.2s}
+.hc .tens{background:var(--yellow)!important;box-shadow:0 0 0 3px #ffb703}
+.hc .sel{background:var(--pink)!important;color:#fff;transform:scale(1.25);z-index:2}
+.hcw{display:grid;grid-template-columns:repeat(3,72px);gap:5px;direction:rtl;justify-content:center;margin:10px auto}
+.hcw div{height:66px;border-radius:12px;background:hsl(200,90%,90%);font-size:30px;font-weight:800;display:flex;align-items:center;justify-content:center;border:4px solid transparent}
+.hcw .mid{background:hsl(330,90%,90%)}
+/* الطابور */
+.line{display:flex;align-items:flex-end;justify-content:center;gap:3px;background:linear-gradient(#fff0,#d5f7cd);border-bottom:6px solid #8bc34a;padding:8px 6px 4px;border-radius:16px;overflow-x:auto}
+.slot{display:flex;flex-direction:column;align-items:center;min-width:40px;border-radius:12px;padding:2px;border:4px solid transparent}
+.slot .an{font-size:34px;line-height:1.2}
+.slot .lab{font-size:12px;font-weight:800;color:var(--purple);min-height:17px;white-space:nowrap}
+.flag{font-size:34px;align-self:center}
+/* الأشكال */
+.scene{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;background:#fff;border-radius:22px;padding:12px;max-width:470px;margin:auto;border:4px dashed #c9b8ff}
+.scene span{display:inline-flex;border-radius:12px;border:4px solid transparent}
+.scene span.tgt{border-color:var(--lime);background:#eaffdf}
+svg{filter:drop-shadow(0 4px 2px rgba(0,0,0,.15))}
+.pk{cursor:pointer;border:5px solid transparent;border-radius:22px;padding:6px;background:#fff;transition:.2s}
+.pk:hover{transform:scale(1.04)}
+.pk.right{border-color:var(--lime)!important;background:#eaffdf!important}
+.pk.wrong{opacity:.45;animation:shake .4s}
+/* الخيارات */
+.opts{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:10px}
+.opt{font-family:inherit;font-size:38px;font-weight:800;min-width:92px;padding:6px 18px;border:none;border-radius:24px;color:#fff;cursor:pointer;box-shadow:0 7px 0 rgba(0,0,0,.18);transition:transform .15s}
+.opt small{display:block;font-size:17px;font-weight:700}
+.opt .w{font-size:25px}
+.opt:active{transform:translateY(5px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.opt.wrong{background:#c9c9c9!important;animation:shake .4s;cursor:not-allowed}
+.opt.right{background:var(--lime)!important;transform:scale(1.12)}
+.opt.ow{background:#fff;color:var(--ink);border:3px solid #e3d9ff}
+@keyframes shake{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
+.o0{background:var(--pink)}.o1{background:var(--blue)}.o2{background:var(--orange)}.o3{background:var(--purple)}
+.fb{text-align:center;font-size:28px;font-weight:800;min-height:44px;margin-top:10px}
+.fb.good{color:#2b9a16}.fb.bad{color:var(--red)}
+.hint{text-align:center;font-size:18px;background:#fff7d6;border-radius:16px;padding:6px 10px;margin-top:6px;display:none}
+.prog{height:24px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.1);margin-bottom:12px;position:relative}
+.prog i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--lime),var(--lime) 12px,#7ee35f 12px,#7ee35f 24px);transition:width .4s}
+.prog span{position:absolute;inset:0;text-align:center;font-weight:800;font-size:15px;line-height:24px}
+.btn{font-family:inherit;font-size:19px;font-weight:800;border:none;border-radius:20px;padding:10px 20px;color:#fff;background:var(--blue);cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.18)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.btn.g{background:var(--lime)}.btn.p{background:var(--pink)}.btn.o{background:var(--orange)}.btn.r{background:var(--red)}.btn.v{background:var(--purple)}
+.ctrl{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+.round{width:54px;height:54px;border-radius:50%;font-size:30px;padding:0;display:flex;align-items:center;justify-content:center}
+.croc{font-size:60px;transition:transform .4s;display:inline-block}
+.sentence{text-align:center;font-size:27px;font-weight:800;background:linear-gradient(90deg,#fff3b0,#ffe0f0);border-radius:20px;padding:8px;margin-top:12px}
+.endstars{font-size:76px;text-align:center;letter-spacing:6px}
+.endstars span{display:inline-block;animation:objIn .6s backwards}
+/* المستويات */
+.lvls{display:grid;gap:12px}
+.lvl{display:flex;align-items:center;justify-content:space-between;gap:10px;border:none;border-radius:22px;padding:12px 18px;font-family:inherit;color:#fff;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.15);text-align:right}
+.lvl b{font-size:22px;display:block}.lvl span{font-size:15px}
+.lvl .st{font-size:26px;white-space:nowrap}
+.l0{background:linear-gradient(90deg,#5cc93f,#2ec4b6)}.l1{background:linear-gradient(90deg,#2ec4b6,#3a86ff)}.l2{background:linear-gradient(90deg,#3a86ff,#8338ec)}.l3{background:linear-gradient(90deg,#8338ec,#ff5fa2)}.l4{background:linear-gradient(90deg,#ff5fa2,#ff9f1c)}
+/* القيمة المكانية */
+.dgs{display:flex;direction:ltr;gap:12px;justify-content:center;margin:8px 0}
+.dgc{display:flex;flex-direction:column;align-items:center;gap:4px}
+.dg{font-size:86px;font-weight:800;width:112px;height:128px;border-radius:24px;background:#fff;border:5px solid #e3d9ff;display:flex;align-items:center;justify-content:center;line-height:1;transition:.3s;cursor:default}
+.dg.pk{cursor:pointer}
+.dg.t{background:#dbe8ff!important;color:#1f5fd6;border-color:#3a86ff!important}
+.dg.o{background:#ffe9cc!important;color:#d96f00;border-color:#ff9f1c!important}
+.dg.hl{background:#fff36b;border-color:#ffb703;animation:pulse 1s infinite alternate}
+@keyframes pulse{to{transform:scale(1.07)}}
+.dgl{font-weight:800;font-size:18px;border-radius:10px;padding:0 10px;color:#fff}
+.dgl.t{background:var(--blue)}.dgl.o{background:var(--orange)}
+.vcard{border-radius:18px;padding:8px 16px;font-size:21px;font-weight:700;color:#fff}
+.vcard.t{background:var(--blue)}.vcard.o{background:var(--orange)}
+.abacus text{font-family:inherit}
+/* المرسم */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:8px}
+.tab{font-family:inherit;font-size:16px;font-weight:800;border:3px solid #e3d9ff;background:#fff;color:var(--ink);border-radius:16px;padding:6px 10px;cursor:pointer}
+.tab.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+.drtask{text-align:center;font-size:21px;font-weight:800;background:linear-gradient(90deg,#fff3b0,#ffe0f0);border-radius:18px;padding:8px 12px;margin:6px 0}
+.tools{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin:6px 0}
+.tool{font-family:inherit;font-size:22px;border:3px solid #e3d9ff;background:#fff;border-radius:14px;padding:4px 9px;cursor:pointer;min-width:46px}
+.tool small{font-size:13px;font-weight:700;display:block}
+.tool.on{border-color:var(--pink);background:#ffe0f0;transform:scale(1.08)}
+.palette{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:4px 0}
+.sw{width:38px;height:38px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 2px #ccc;cursor:pointer}
+.sw.on{box-shadow:0 0 0 4px var(--ink);transform:scale(1.15)}
+.cwrap{position:relative;width:100%;max-width:800px;margin:8px auto;aspect-ratio:4/3;background:#fff;border-radius:20px;overflow:hidden;border:5px solid #e3d9ff;touch-action:none;cursor:crosshair}
+.cwrap canvas{position:absolute;inset:0;width:100%;height:100%;filter:none}
+#cvL{pointer-events:none}
+/* المعلّمة نور والمنصة التفاعلية */
+.cT{color:var(--blue)}.cO{color:var(--orange)}
+.teacher{display:block;animation:breathe 3s ease-in-out infinite;filter:drop-shadow(0 6px 6px rgba(0,0,0,.15))}
+@keyframes breathe{50%{transform:translateY(-3px)}}
+.teacher .m-happy,.teacher .m-o,.teacher .m-talk{display:none}
+.teacher.happy .m-smile{display:none}.teacher.happy .m-happy{display:block}
+.teacher.think .m-smile{display:none}.teacher.think .m-o{display:block}.teacher.think .brow{transform:translateY(-3px)}
+.teacher.talking .m-smile,.teacher.talking .m-happy,.teacher.talking .m-o{display:none}
+.teacher.talking .m-talk{display:block;animation:talk .2s infinite alternate}
+.teacher .m-talk{transform-box:fill-box;transform-origin:center}
+@keyframes talk{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
+.teacher .eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.teacher .arm{transform-box:fill-box;transform-origin:15% 95%;animation:wave 3.2s ease-in-out infinite}
+@keyframes wave{0%,55%,100%{transform:rotate(0)}65%{transform:rotate(-16deg)}75%{transform:rotate(8deg)}85%{transform:rotate(-12deg)}}
+.tbox{display:flex;align-items:center;gap:12px}
+.tbox .tw{flex:0 0 auto;width:118px}
+.bubble{position:relative;background:#fff;border:4px solid #ffc2dc;border-radius:24px;padding:12px 16px;font-size:20px;font-weight:700;flex:1;box-shadow:0 6px 16px rgba(255,95,162,.15);line-height:1.6}
+.bubble::before{content:'';position:absolute;right:-16px;top:38%;border:12px solid transparent;border-left-color:#ffc2dc}
+.bubble small{font-size:16px;font-weight:600;opacity:.85}
+.mini{border:none;background:#fff3b0;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:16px;vertical-align:middle;margin-inline-start:6px}
+.stage{min-height:210px;background:linear-gradient(#fffdf5,#fff);border-radius:24px;padding:12px;margin:12px 0;border:4px dashed #ffe08a;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.dots{display:flex;gap:7px;justify-content:center;margin-bottom:10px}
+.dot{width:14px;height:14px;border-radius:50%;background:#e3d9ff;transition:.3s}.dot.on{background:var(--pink);transform:scale(1.35)}.dot.done{background:var(--lime)}
+.glow{animation:glow .9s infinite alternate}
+@keyframes glow{to{box-shadow:0 0 0 8px rgba(92,201,63,.35),0 5px 0 rgba(0,0,0,.18)}}
+.ch{cursor:pointer;transition:.2s}
+.ch.right{border-color:var(--lime)!important;background:#eaffdf!important}
+.ch.wrong{animation:shake .4s;opacity:.55}
+.bigcube{width:34px;height:34px;background:#ff9f1c;border:3px solid #d97a00;border-radius:6px;cursor:pointer;position:relative;display:inline-block;transition:.2s}
+.tapped{transform:scale(1.15);box-shadow:0 0 0 4px var(--lime)}
+.badge2{position:absolute;top:-16px;right:-8px;background:var(--purple);color:#fff;border-radius:12px;font-size:15px;padding:0 7px;font-weight:800;white-space:nowrap}
+.tapw{position:relative;display:inline-flex;cursor:pointer;border-radius:12px;padding:3px}
+.trophy{font-size:120px;text-align:center;animation:boing 1s infinite alternate}
+.houses{display:flex;direction:ltr;gap:10px;justify-content:center;flex-wrap:nowrap}
+.house{display:flex;flex-direction:column;align-items:center;cursor:pointer;width:156px}
+.roof{width:0;height:0;border-left:78px solid transparent;border-right:78px solid transparent;border-bottom:52px solid}
+.house.t .roof{border-bottom-color:#3a86ff}.house.o .roof{border-bottom-color:#ff9f1c}
+.hb{width:140px;min-height:150px;border-radius:0 0 18px 18px;display:flex;flex-direction:column;align-items:center;padding:6px;gap:4px;font-size:18px}
+.house.t .hb{background:#dbe8ff;border:4px solid #3a86ff;border-top:none;color:#1f5fd6}.house.o .hb{background:#ffe9cc;border:4px solid #ff9f1c;border-top:none;color:#d96f00}
+.hslot{font-size:60px;font-weight:800;min-height:66px;line-height:1.1}
+.hb .blk{transform:scale(.62);transform-origin:top center;margin-bottom:-40px;min-width:0}
+.dchip{font-family:inherit;font-size:52px;font-weight:800;width:84px;height:84px;border-radius:20px;border:4px solid #e3d9ff;background:#fff;cursor:pointer;color:var(--ink)}
+.dchip.sel{border-color:var(--pink);background:#ffe0f0;transform:scale(1.12)}
+.nl{display:flex;direction:rtl;justify-content:center;gap:0;margin:8px auto;overflow-x:auto}
+.tick{display:flex;flex-direction:column;align-items:center;min-width:32px}
+.tick .fr{height:44px;font-size:34px;line-height:44px}
+.tick .ln{width:100%;height:12px;border-top:5px solid var(--ink);position:relative}.tick .ln::after{content:'';position:absolute;left:calc(50% - 1.5px);top:0;width:3px;height:9px;background:var(--ink)}
+.tick .tn{font-weight:800;font-size:19px;border-radius:50%;min-width:28px;text-align:center}
+.tick.on .tn{background:var(--yellow)}.tick.jumped .tn{color:var(--pink)}
+.tour{background:#fff;border-radius:20px;padding:8px;min-width:120px;text-align:center;cursor:pointer;border:4px solid #e3d9ff}
+.tour .em{font-size:54px;display:block}
+.hand{position:fixed;font-size:56px;z-index:97;transition:left .9s ease,top .9s ease;pointer-events:none;filter:drop-shadow(0 4px 4px rgba(0,0,0,.3))}
+.hand.tap{animation:boing .45s}
+.tmini{display:flex;align-items:center;gap:8px;margin:6px 0}
+.tmini .tw{width:78px;flex:0 0 auto}
+.tmini .bubble{font-size:18px;padding:8px 12px}
+.demo #qOpts,.demo #qVis{pointer-events:none}
+.stage .eq{font-size:30px;gap:6px}.stage .eq .b{min-width:46px;height:52px;padding:0 6px}
+.fb,.hint{display:none!important}
+.lock{opacity:.55;filter:grayscale(.6)}
+/* المعلم */
+label{font-weight:700}
+select,input,textarea{font-family:inherit;font-size:18px;border:3px solid #e3d9ff;border-radius:14px;padding:6px 10px;background:#fff;color:var(--ink)}
+textarea{width:100%;min-height:110px}
+.form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:center}
+.form>div{display:flex;flex-direction:column;gap:4px}
+.form input{width:90px;text-align:center}
+.list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;max-height:320px;overflow:auto}
+.chip{background:#f3edff;border-radius:16px;padding:4px 6px 4px 12px;font-size:20px;font-weight:700;display:flex;align-items:center;gap:6px}
+.chip button{border:none;background:var(--red);color:#fff;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:14px}
+.setrow{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(140px);background:var(--ink);color:#fff;padding:10px 22px;border-radius:30px;font-size:18px;font-weight:700;z-index:99;transition:transform .3s;text-align:center;max-width:92vw}
+.toast{opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.cmprow{flex-wrap:nowrap!important;gap:6px!important;align-items:center}.cmprow .blk{max-width:150px;min-width:0}.cmprow .group{min-width:0}
+.confetti{position:fixed;top:-20px;width:12px;height:16px;z-index:98;pointer-events:none;border-radius:3px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media(max-width:560px){.tbox .tw{width:84px}.bubble{font-size:17px;padding:10px 12px}.house{width:122px}.roof{border-left-width:60px;border-right-width:60px;border-bottom-width:42px}.hb{width:110px;font-size:15px}.hslot{font-size:48px}.tick{min-width:26px}.tick .tn{font-size:16px}.dg{font-size:64px;width:86px;height:100px}.tool{font-size:19px;min-width:40px}.sw{width:32px;height:32px}.drtask{font-size:17px}.obj{font-size:24px}.eq{font-size:32px}.eq .b{min-width:54px;height:56px}.opt{font-size:30px;min-width:74px;padding:6px 12px}.opt .w{font-size:19px}
+ .sym{width:64px;height:64px;font-size:42px}.numtag{font-size:30px}.bignum{font-size:70px}.topbar h1{font-size:18px}
+ .line{gap:1px;padding:6px 2px 4px}.slot{min-width:0;padding:1px;border-width:3px}.slot .an{font-size:21px}.slot .lab{font-size:9px}.flag{font-size:22px}.cmprow .sym{width:52px;height:52px;font-size:34px;flex-shrink:0}.rod{height:96px;width:12px;background:repeating-linear-gradient(0deg,#3a86ff 0 8px,#cfe1ff 8px 9.6px)}
+ .cubes{grid-template-columns:repeat(3,13px)}.cube{width:13px;height:13px}.car{min-width:58px;height:54px;font-size:28px}.loco{font-size:42px}.hc div{font-size:12px}}
+</style>
+</head>
+<body>
+<div class="sky">
+  <div class="sun"></div>
+  <div class="cloud" style="top:12%;width:140px;height:44px;animation-duration:55s"></div>
+  <div class="cloud" style="top:30%;width:100px;height:34px;animation-duration:70s;animation-delay:-30s"></div>
+  <div class="cloud" style="top:55%;width:160px;height:48px;animation-duration:85s;animation-delay:-50s"></div>
+  <div class="floaty" style="top:70%;right:6%">➕</div>
+  <div class="floaty" style="top:40%;left:4%;animation-delay:-2s">🔺</div>
+  <div class="floaty" style="top:85%;left:20%;animation-delay:-4s">⭐</div>
+  <div class="floaty" style="top:20%;right:30%;animation-delay:-3s">🔢</div>
+</div>
+
+<div class="topbar">
+  <button class="iconbtn" id="backBtn" onclick="back()" style="visibility:hidden" aria-label="رجوع">➜</button>
+  <h1>🌈 رياضياتي الممتعة</h1>
+  <div class="starbox">⭐ <span id="starCount">٠</span></div>
+</div>
+
+<!-- الرئيسية -->
+<section class="screen active" id="home">
+  <div class="hello"><div class="big">أهلاً يا بطل الرياضيات! 🦸</div><p>المعلّمة نور 👩‍🏫 تشرح لك كل مهارة، ثم تتدرّب بـ ٥٠ تمريناً</p></div>
+  <div class="grid" id="homeGrid"></div>
+</section>
+
+<!-- صفحة المهارة -->
+<section class="screen" id="skill">
+  <div class="panel">
+    <h2 class="ttl" id="skTitle"></h2>
+    <p class="muted">٥ مستويات × ١٠ تمارين = ٥٠ تمريناً متدرجاً</p>
+    <div class="row" style="margin-bottom:12px"><button class="btn p" id="skIntro">🎬 الشرح التفاعلي مع المعلّمة نور</button></div>
+    <div class="lvls" id="lvls"></div>
+    <div class="row" style="margin-top:14px"><button class="btn o" id="skLesson">📚 شاهد الدرس أولاً</button></div>
+  </div>
+</section>
+
+<!-- الدروس -->
+<section class="screen" id="learn">
+  <h2 class="ttl">📚 تعلّم معي</h2>
+  <div class="grid">
+    <button class="card c6" onclick="openLesson('lcount')"><span class="e">🔢</span><span class="t">العدّ حتى ٢٠</span></button>
+    <button class="card c9" onclick="openLesson('lchart')"><span class="e">💯</span><span class="t">لوحة المئة</span></button>
+    <button class="card c7" onclick="openLesson('lplace')"><span class="e">🧱</span><span class="t">العشرات والآحاد</span></button>
+    <button class="card c2" onclick="openLesson('lcmp')"><span class="e">🐊</span><span class="t">التمساح الجائع</span></button>
+    <button class="card c1" onclick="openLesson('ladd')"><span class="e">🧺</span><span class="t">سلّة الجمع</span></button>
+    <button class="card c3" onclick="openLesson('lsub')"><span class="e">🐦</span><span class="t">العصافير الطائرة</span></button>
+    <button class="card c4" onclick="openLesson('lpv')"><span class="e">🔢</span><span class="t">القيمة المكانية</span></button>
+    <button class="card c8" onclick="openLesson('lord')"><span class="e">🏁</span><span class="t">الأول والثاني</span></button>
+    <button class="card c10" onclick="openLesson('lshape')"><span class="e">🔺</span><span class="t">الأشكال الهندسية</span></button>
+  </div>
+</section>
+
+<section class="screen" id="lcount">
+  <div class="panel"><h2 class="ttl">🔢 هيا نعدّ!</h2>
+    <div class="col"><div class="bignum" id="cNum"></div><div class="word" id="cWord"></div>
+      <div class="group" id="cGroup" style="max-width:360px;min-height:110px"></div>
+      <div class="ctrl" style="margin-top:10px"><button class="btn r round" onclick="lc=Math.max(0,lc-1);renderCount()">−</button><button class="btn o" onclick="say(nw(lc))">🔊 اسمع</button><button class="btn g round" onclick="lc=Math.min(20,lc+1);renderCount()">+</button></div>
+      <button class="btn v" style="margin-top:8px" onclick="countAnim('cGroup')">👆 لنعدّ معاً</button></div></div>
+</section>
+
+<section class="screen" id="lchart">
+  <div class="panel"><h2 class="ttl">💯 لوحة المئة</h2>
+    <p class="muted">اضغط على أي عدد لتسمعه. كل صف فيه عشرة أعداد، والعدد الذي تحته يزيد عشرة</p>
+    <div class="row"><div class="bignum" id="hcNum" style="font-size:70px"></div><div class="word" id="hcWord"></div></div>
+    <div class="hc" id="hc"></div>
+    <div class="ctrl"><button class="btn o" onclick="hcTens()">🌟 أظهر العشرات</button><button class="btn r" onclick="hcClear()">مسح</button></div></div>
+</section>
+
+<section class="screen" id="lplace">
+  <div class="panel"><h2 class="ttl">🧱 العشرات والآحاد</h2>
+    <p class="muted">العمود الأزرق = عشرة (١٠ مكعبات ملتصقة)، والمكعب البرتقالي = واحد</p>
+    <div class="row" style="align-items:flex-start">
+      <div class="col"><b>العشرات</b><div class="ctrl"><button class="btn r round" onclick="pvT_(-1)">−</button><button class="btn round" onclick="pvT_(1)">+</button></div></div>
+      <div id="pvBlocks"></div>
+      <div class="col"><b>الآحاد</b><div class="ctrl"><button class="btn r round" onclick="pvO_(-1)">−</button><button class="btn o round" onclick="pvO_(1)">+</button></div></div>
+    </div>
+    <div id="pvTable"></div>
+    <div class="sentence" id="pvSent"></div>
+    <div class="row" style="margin-top:10px"><button class="btn v" onclick="say(nw(pvT*10+pvO))">🔊 اسمع العدد</button></div></div>
+</section>
+
+<section class="screen" id="lpv">
+  <div class="panel"><h2 class="ttl">🔢 القيمة المكانية</h2>
+    <p class="muted">لكل رقم <b>منزلة</b> و<b>قيمة</b>: الرقم على اليسار في منزلة <b style="color:var(--blue)">العشرات 🔵</b>، والرقم على اليمين في منزلة <b style="color:var(--orange)">الآحاد 🟠</b></p>
+    <div id="lpvDigits"></div>
+    <div class="row" id="lpvVals"></div>
+    <div class="row" style="margin-top:8px;align-items:center">
+      <div class="col"><b style="color:var(--blue)">العشرات</b><div class="ctrl"><button class="btn r round" onclick="lpvT=Math.max(0,lpvT-1);renderLPV()">−</button><button class="btn round" onclick="lpvT=Math.min(9,lpvT+1);renderLPV()">+</button></div></div>
+      <div id="lpvAbacus"></div>
+      <div class="col"><b style="color:var(--orange)">الآحاد</b><div class="ctrl"><button class="btn r round" onclick="lpvO=Math.max(0,lpvO-1);renderLPV()">−</button><button class="btn o round" onclick="lpvO=Math.min(9,lpvO+1);renderLPV()">+</button></div></div>
+    </div>
+    <div class="sentence" id="lpvSent"></div>
+    <div class="ctrl" style="margin-top:12px">
+      <button class="btn v" onclick="say(nw(lpvT*10+lpvO))">🔊 اسمع</button>
+      <button class="btn o" onclick="lpvT=rnd(1,9);lpvO=rnd(0,9);renderLPV()">🎲 عدد عشوائي</button>
+      <button class="btn p" onclick="openDraw('task',lpvT*10+lpvO,true)">🎨 لوّن هذا العدد</button>
+    </div></div>
+</section>
+
+<section class="screen" id="draw">
+  <div class="panel" style="padding:12px">
+    <h2 class="ttl">🎨 مرسم الأطفال</h2>
+    <div class="tabs" id="drTabs">
+      <button class="tab" data-m="task" onclick="setDrMode('task')">🎯 مهام التلوين</button>
+      <button class="tab" data-m="trace" onclick="setDrMode('trace')">✏️ اكتب الأرقام</button>
+      <button class="tab" data-m="num" onclick="setDrMode('num')">🔢 لوّن العدد</button>
+      <button class="tab" data-m="shapes" onclick="setDrMode('shapes')">🔺 لوّن الأشكال</button>
+      <button class="tab" data-m="free" onclick="setDrMode('free')">🖌️ رسم حر</button>
+    </div>
+    <div class="ctrl" id="drNumBox"><button class="btn r round" onclick="drNum(-1)">−</button><span class="numtag" id="drNumV" style="background:var(--purple)"></span><button class="btn g round" onclick="drNum(1)">+</button><button class="btn o" onclick="drNum(0)">🎲</button></div>
+    <div class="drtask" id="drTask"></div>
+    <div class="tools" id="drTools">
+      <button class="tool" data-t="fill" onclick="setTool('fill')">🪣<small>تلوين</small></button>
+      <button class="tool" data-t="brush" onclick="setTool('brush')">🖌️<small>فرشاة</small></button>
+      <button class="tool" data-t="eraser" onclick="setTool('eraser')">🧽<small>ممحاة</small></button>
+      <button class="tool" data-t="stamp" onclick="setTool('stamp')">⭐<small>ملصقات</small></button>
+      <span style="width:6px"></span>
+      <button class="tool" data-s="6" onclick="setSize(6)">•</button>
+      <button class="tool" data-s="14" onclick="setSize(14)">●</button>
+      <button class="tool" data-s="30" onclick="setSize(30)" style="font-size:30px">●</button>
+      <span style="width:6px"></span>
+      <button class="tool" onclick="drUndo()">↩️<small>تراجع</small></button>
+      <button class="tool" onclick="newPage()">🗑️<small>مسح</small></button>
+      <button class="tool" onclick="drSave()">💾<small>حفظ</small></button>
+    </div>
+    <div class="palette" id="pal"></div>
+    <div class="palette" id="stamps" style="display:none"></div>
+    <div class="cwrap" id="cwrap"><canvas id="cvP" width="800" height="600"></canvas><canvas id="cvL" width="800" height="600"></canvas></div>
+    <div class="ctrl"><button class="btn g" onclick="checkDraw()">✔ انتهيت، تحقّق!</button><button class="btn o" id="drNew" onclick="DR.force=false;newPage()">🎲 صفحة جديدة</button></div>
+  </div>
+</section>
+
+<section class="screen" id="lcmp">
+  <div class="panel"><h2 class="ttl">🐊 التمساح الجائع</h2>
+    <p class="instr" style="font-size:19px">التمساح جائع دائماً! يفتح فمه نحو <b style="color:var(--pink)">العدد الأكبر</b> ليأكله 😋</p>
+    <div class="row" style="align-items:flex-start">
+      <div class="col"><div class="group" id="lcA"></div><div class="numtag" id="lcAn"></div>
+        <div class="ctrl"><button class="btn r round" onclick="cmpA=Math.max(0,cmpA-1);renderLC()">−</button><button class="btn g round" onclick="cmpA=Math.min(10,cmpA+1);renderLC()">+</button></div></div>
+      <div class="col" style="margin-top:14px"><span class="croc" id="croc">🐊</span><div class="sym done" id="lcSym" dir="ltr"></div></div>
+      <div class="col"><div class="group" id="lcB"></div><div class="numtag" id="lcBn" style="background:var(--pink)"></div>
+        <div class="ctrl"><button class="btn r round" onclick="cmpB=Math.max(0,cmpB-1);renderLC()">−</button><button class="btn g round" onclick="cmpB=Math.min(10,cmpB+1);renderLC()">+</button></div></div>
+    </div>
+    <div class="sentence" id="lcSent"></div></div>
+</section>
+
+<section class="screen" id="ladd">
+  <div class="panel"><h2 class="ttl">🧺 سلّة الجمع</h2>
+    <p class="instr" style="font-size:19px">نضع التفاح 🍎 مع البرتقال 🍊 في سلة واحدة ونعدّ الكل</p>
+    <div class="row" style="align-items:flex-start">
+      <div class="col"><div class="group" id="laA"></div><div class="ctrl"><button class="btn r round" onclick="addA=Math.max(0,addA-1);renderLA()">−</button><button class="btn g round" onclick="addA=Math.min(10,addA+1);renderLA()">+</button></div></div>
+      <div class="opsign" style="margin-top:20px">+</div>
+      <div class="col"><div class="group" id="laB"></div><div class="ctrl"><button class="btn r round" onclick="addB=Math.max(0,addB-1);renderLA()">−</button><button class="btn g round" onclick="addB=Math.min(10,addB+1);renderLA()">+</button></div></div>
+    </div>
+    <div class="col" style="margin-top:12px"><div style="font-size:26px">🧺⬇️</div><div class="group" id="laAll" style="max-width:420px;border-color:#9ad0ff"></div><div id="laEq"></div>
+      <button class="btn v" onclick="countAnim('laAll')">👆 لنعدّ الكل معاً</button></div></div>
+</section>
+
+<section class="screen" id="lsub">
+  <div class="panel"><h2 class="ttl">🐦 العصافير الطائرة</h2>
+    <p class="instr" style="font-size:19px">اضغط على العصافير لتطير بعيداً 🕊️ ثم عُدّ الباقي</p>
+    <div class="col"><div class="group" id="lsG" style="max-width:420px;min-height:110px"></div><div id="lsEq"></div>
+      <div class="ctrl"><button class="btn r round" onclick="subT=Math.max(1,subT-1);renderLS(true)">−</button><span style="font-weight:800">عدد العصافير</span><button class="btn g round" onclick="subT=Math.min(10,subT+1);renderLS(true)">+</button></div>
+      <button class="btn o" style="margin-top:8px" onclick="renderLS(true)">🔄 أعد العصافير</button></div></div>
+</section>
+
+<section class="screen" id="lord">
+  <div class="panel"><h2 class="ttl">🏁 الأول والثاني والثالث</h2>
+    <p class="muted">الحيوانات تقف في الطابور. نبدأ العدّ من خط البداية 🏁 على اليمين</p>
+    <div id="ordLine"></div>
+    <div class="sentence" id="ordSay"></div>
+    <div class="ctrl" style="margin-top:12px"><button class="btn v" onclick="ordAll()">✨ أظهر الترتيب</button><button class="btn o" onclick="renderOrd(true)">🔀 اخلط الطابور</button></div></div>
+</section>
+
+<section class="screen" id="lshape">
+  <div class="panel"><h2 class="ttl">🔺 الأشكال الهندسية</h2>
+    <div class="col"><div id="shBig"></div><div class="word" id="shName"></div><div id="shInfo" style="text-align:center;font-size:20px"></div></div></div>
+  <div class="panel"><h3 style="text-align:center;margin:0 0 8px">الأشكال المستوية</h3><div class="row" id="sh2"></div></div>
+  <div class="panel"><h3 style="text-align:center;margin:0 0 8px">المجسّمات</h3><div class="row" id="sh3"></div></div>
+</section>
+
+<!-- المنصة التفاعلية -->
+<section class="screen" id="intro">
+  <div class="panel">
+    <div class="dots" id="inDots"></div>
+    <div class="tbox"><div class="tw" id="inTeacher"></div><div class="bubble"><span id="inSay"></span><button class="mini" onclick="teachAgain()">🔊</button></div></div>
+    <div class="stage" id="inStage"></div>
+    <div class="ctrl"><button class="btn v" id="inPrev" onclick="inPrev()">➡️ السابق</button><button class="btn g" id="inNextBtn" onclick="inNext()">التالي ⬅️</button></div>
+    <div class="row" style="margin-top:10px"><button class="btn" id="inSkip" style="font-size:14px;background:#94a3b8" onclick="finishIntro()">تخطّي الشرح</button></div>
+  </div>
+</section>
+
+<!-- اللعب -->
+<section class="screen" id="play">
+  <div class="prog"><i id="progBar"></i><span id="progTxt"></span></div>
+  <div class="panel">
+    <div class="row" style="justify-content:space-between"><span style="font-weight:800" id="modeLbl"></span>
+      <button class="btn o" style="font-size:16px;padding:6px 12px" onclick="readQ()">🔊 اقرأ السؤال</button></div>
+    <div class="tmini"><div class="tw" id="pT"></div><div class="bubble" id="pSay"></div></div>
+    <div class="instr" id="qInstr"></div>
+    <div id="qVis"></div><div id="qEq"></div>
+    <div class="opts" id="qOpts"></div>
+    <div class="fb" id="fb"></div><div class="hint" id="hint"></div>
+    <div class="ctrl" id="demoBar" style="display:none;margin-top:12px"><button class="btn o" onclick="nextQ();runDemo()">🔁 مثال آخر</button><button class="btn g glow" onclick="endDemo()">فهمت! دوري الآن 🚀</button></div>
+  </div>
+</section>
+
+<section class="screen" id="end">
+  <div class="panel" style="text-align:center">
+    <div class="endstars" id="endStars"></div>
+    <h2 class="ttl" id="endTitle"></h2>
+    <p style="font-size:22px;font-weight:700" id="endScore"></p>
+    <div class="row">
+      <button class="btn g" onclick="replay()">🔁 أعد المستوى</button>
+      <button class="btn p" id="nextLvlBtn" onclick="startLevel(R.sk,R.l+1)">⬅️ المستوى التالي</button>
+      <button class="btn v" onclick="go('home')">🏠 الرئيسية</button>
+    </div>
+  </div>
+</section>
+
+<!-- لوحة المعلم -->
+<section class="screen" id="teacher">
+  <h2 class="ttl">⚙️ لوحة المعلم</h2>
+  <div class="panel">
+    <h3 style="margin:0 0 10px;text-align:center">🎛️ الإعدادات</h3>
+    <div class="setrow">
+      <label>أسئلة تحدي المزيج: <select id="sPer" onchange="saveSet()"><option>10</option><option>20</option><option>30</option><option>50</option></select></label>
+      <label>شكل الأرقام: <select id="sNum" onchange="saveSet()"><option value="1">عربية مشرقية (٣)</option><option value="0">لاتينية (3)</option></select></label>
+      <label><input type="checkbox" id="sSnd" onchange="saveSet()" style="width:auto"> الأصوات</label>
+       <label><input type="checkbox" id="sIntro" onchange="saveSet()" style="width:auto"> إلزام الطالب بالشرح التفاعلي قبل التمارين</label>
+      <label><input type="checkbox" id="sMix" onchange="saveSet()" style="width:auto"> دمج تمارين المعلم في تحدي المزيج</label>
+    </div>
+  </div>
+  <div class="panel">
+    <h3 style="margin:0 0 10px;text-align:center">➕ إضافة تمرين (حتى ١٠٠)</h3>
+    <div class="form">
+      <div><label>النوع</label><select id="tType" onchange="tPreview()"><option value="add">جمع ➕</option><option value="sub">طرح ➖</option><option value="cmp">مقارنة 🐊</option></select></div>
+      <div><label>العدد الأول</label><input id="tA" inputmode="numeric" oninput="tPreview()"></div>
+      <div><label>العدد الثاني</label><input id="tB" inputmode="numeric" oninput="tPreview()"></div>
+      <button class="btn g" onclick="addCustom()">إضافة ✔</button>
+    </div>
+    <div class="form" style="margin-top:10px">
+      <div><label>توليد عشوائي حتى</label><select id="gMax"><option>10</option><option>20</option><option>50</option><option selected>100</option></select></div>
+      <button class="btn o" onclick="genCustom()">🎲 أضف ١٠ تمارين</button>
+    </div>
+    <p class="muted" id="tPrev"></p>
+  </div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px;text-align:center">📝 إضافة تمارين كثيرة دفعة واحدة</h3>
+    <p class="muted">كل تمرين في سطر: <b>٣٤+٢٥</b> للجمع، <b>٨٧-٤٣</b> للطرح، <b>٦٥؟٥٦</b> للمقارنة</p>
+    <textarea id="bulk" placeholder="٣٤+٢٥&#10;٨٧-٤٣&#10;٦٥؟٥٦"></textarea>
+    <div class="row" style="margin-top:8px"><button class="btn v" onclick="addBulk()">إضافة الكل 📥</button></div>
+  </div>
+  <div class="panel">
+    <h3 style="margin:0;text-align:center">📋 تمارين المعلم (<span id="cCount">٠</span>)</h3>
+    <div class="list" id="cList"></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn p" onclick="startCustom()">▶️ جرّب التمارين</button>
+      <button class="btn" onclick="exportC()">📤 تصدير</button>
+      <button class="btn o" onclick="importC()">📥 استيراد</button>
+      <button class="btn r" onclick="clearC()">🗑️ حذف الكل</button>
+    </div>
+    <textarea id="ioBox" style="margin-top:10px;direction:ltr;display:none" placeholder="الصق هنا نص التمارين المُصدَّر ثم اضغط استيراد"></textarea>
+  </div>
+  <div class="row"><button class="btn r" onclick="resetAll()">إعادة تصفير النجوم والتقدّم ⭐</button></div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========== أدوات ========== */
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem('rmath2_'+k);return v?JSON.parse(v):d}catch(e){return d}},
+             set(k,v){try{localStorage.setItem('rmath2_'+k,JSON.stringify(v))}catch(e){}}};
+let S=Object.assign({eastern:true,sound:true,perRound:10,mixCustom:true,forceIntro:true},store.get('settings',{}));
+let introDone=store.get('intro',{}),stars=store.get('stars',0),custom=store.get('custom',[]),prog=store.get('prog',{});
+const AR='٠١٢٣٤٥٦٧٨٩';
+const N=x=>S.eastern?String(x).replace(/\d/g,d=>AR[d]):String(x);
+const toWestern=s=>String(s).replace(/[٠-٩]/g,d=>AR.indexOf(d)).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const EMO=['🍎','🍓','🍊','🍌','⭐','🎈','🐥','🐟','🌸','🚗','🍭','🐞','🧁','⚽','🦋','🍉'];
+const ANI=['🐰','🐻','🐱','🐶','🐸','🐼','🦊','🐵','🐯','🐷','🐮','🐔','🐧','🦁'];
+const ONES=['صفر','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر'];
+const TENS=['','عشرة','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون'];
+const nw=n=>n<20?ONES[n]:n>=100?'مئة':(n%10?ONES[n%10]+' و'+TENS[Math.floor(n/10)]:TENS[n/10]);
+const ORD=['الأول','الثاني','الثالث','الرابع','الخامس','السادس','السابع','الثامن','التاسع','العاشر'];
+/* العدد الأول يظهر يميناً، وفتحة الرمز تتجه دائماً نحو العدد الأكبر */
+const GLYPH={gt:'<',lt:'>',eq:'='};
+const RELW={gt:'أكبر من',lt:'أصغر من',eq:'يساوي'};
+const rel=(a,b)=>a>b?'gt':a<b?'lt':'eq';
+
+/* ========== أصوات ========== */
+let actx;
+function tone(freqs,dur=0.12,type='sine',vol=0.22){if(!S.sound)return;try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime;
+ freqs.forEach((f,i)=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;
+ g.gain.setValueAtTime(0.0001,t+i*dur);g.gain.exponentialRampToValueAtTime(vol,t+i*dur+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+(i+1)*dur);
+ o.connect(g);g.connect(actx.destination);o.start(t+i*dur);o.stop(t+(i+1)*dur+0.03)})}catch(e){}}
+const click=()=>tone([660],0.06,'triangle',0.12),good=()=>tone([523,659,784,1046],0.11,'triangle'),bad=()=>tone([300,220],0.16,'sawtooth',0.08),pop=()=>tone([880],0.05,'sine',0.12);
+function say(txt){if(!S.sound)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang='ar-SA';u.rate=.85;
+ const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.startsWith('ar'));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2400)}
+function confetti(n=40){const cols=['#ff5fa2','#ffd60a','#2ec4b6','#3a86ff','#8338ec','#ff9f1c','#5cc93f'];
+ for(let i=0;i<n;i++){const d=document.createElement('div');d.className='confetti';d.style.left=Math.random()*100+'vw';d.style.background=pick(cols);
+ d.style.animationDuration=(1.2+Math.random()*1.5)+'s';d.style.animationDelay=Math.random()*.3+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),3200)}}
+function updStars(){$('#starCount').textContent=N(stars);store.set('stars',stars)}
+
+/* ========== التنقل ========== */
+let hist=[];
+function go(id,push=true){const cur=document.querySelector('.screen.active');
+ if(id==='home')hist=[];else if(push&&cur&&cur.id!==id)hist.push(cur.id);
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active');
+ $('#backBtn').style.visibility=id==='home'?'hidden':'visible';window.scrollTo(0,0);click();if(id==='home')renderHome()}
+function back(){let p=hist.pop()||'home';while(p==='play'||p==='end')p=hist.pop()||'home';go(p,false)}
+
+/* ========== رسوم مساعدة ========== */
+function groupHTML(n,emo,opt={}){let h='';for(let i=0;i<n;i++){const out=opt.crossFrom!=null&&i>=opt.crossFrom;
+ h+=`<span class="obj pop${out?' out':''}" style="animation-delay:${i*0.04}s">${emo}</span>`}
+ if(opt.ghost)for(let i=0;i<opt.ghost;i++)h+=`<span class="obj ghost pop" style="animation-delay:${(n+i)*0.04}s"></span>`;
+ return h||'<span style="opacity:.5;font-size:20px">لا شيء</span>'}
+function blocks(n,cross){const t=Math.floor(n/10),o=n%10,ct=cross?cross.t:0,co=cross?cross.o:0;let h='<div class="blk">';
+ for(let i=0;i<t;i++)h+=`<span class="rod pop${i>=t-ct?' x':''}" style="animation-delay:${i*.05}s"></span>`;
+ if(o){h+='<span class="cubes">';for(let i=0;i<o;i++)h+=`<span class="cube pop${i>=o-co?' x':''}" style="animation-delay:${(t+i)*.05}s"></span>`;h+='</span>'}
+ if(!n)h+='<span style="opacity:.5;font-size:20px">لا شيء</span>';return h+'</div>'}
+function eqHTML(parts,qi=-1){return '<div class="eq">'+parts.map((p,i)=>{const op=['+','−','='].includes(p);
+ return `<div class="b${op?' o':''}${i===qi?' q':''}"${i===qi?' id="qMark"':''}>${p}</div>`}).join('')+'</div>'}
+function pvt(t,o,mark){const cell=(v,m)=>`<div class="pv${m?' q':''}"${m?' id="qMark"':''}>${m?'؟':v}</div>`;
+ return `<div class="pvt"><div class="pvh">العشرات</div><div class="pvh o">الآحاد</div>${cell(N(t),mark==='t')}${cell(N(o),mark==='o')}</div>`}
+function trainHTML(arr,qi){return `<div class="train"><span class="loco">🚂</span>${arr.map((v,i)=>`<div class="car${i===qi?' q':''}"${i===qi?' id="qMark"':''}>${i===qi?'؟':N(v)}</div>`).join('')}</div>`}
+function lineHTML(arr,pk){return `<div class="line"><span class="flag">🏁</span>${arr.map((a,i)=>`<div class="slot${pk?' pk':''}"${pk?` onclick="answer('${i}',this)"`:''} style="background:transparent"><span class="an">${a}</span><span class="lab" data-i="${i}"></span></div>`).join('')}</div>`}
+function showOrdLabels(){document.querySelectorAll('#qVis .lab').forEach(l=>l.textContent=ORD[+l.dataset.i])}
+function countAnim(id){const objs=[...document.querySelectorAll('#'+id+' .obj:not(.out):not(.ghost)')];let i=0;
+ objs.forEach(o=>{o.classList.remove('hl');const b=o.querySelector('.badge');if(b)b.remove()});
+ const step=()=>{if(i>0)objs[i-1].classList.remove('hl');if(i>=objs.length){if(objs.length){good();toast('العدد '+N(objs.length)+' 🎉')}return}
+  const o=objs[i];o.classList.add('hl');o.insertAdjacentHTML('beforeend',`<span class="badge">${N(i+1)}</span>`);pop();i++;setTimeout(step,550)};step()}
+
+/* الأشكال */
+const SH2=[{k:'circle',n:'دائرة',d:'الدائرة',pl:'الدوائر',s:0,c:0,ex:'🕐 🍪 🪙'},{k:'square',n:'مربع',d:'المربع',pl:'المربعات',s:4,c:4,ex:'🧇 🖼️ ⬜'},
+ {k:'triangle',n:'مثلث',d:'المثلث',pl:'المثلثات',s:3,c:3,ex:'🍕 ⚠️ 📐'},{k:'rect',n:'مستطيل',d:'المستطيل',pl:'المستطيلات',s:4,c:4,ex:'🚪 📱 📘'}];
+const SH3=[{k:'cube',n:'مكعب',d:'المكعب',ex:'🎲 🧊 📦'},{k:'sphere',n:'كرة',d:'الكرة',ex:'⚽ 🏀 🌍'},{k:'cyl',n:'أسطوانة',d:'الأسطوانة',ex:'🥫 🔋 🥁'},{k:'cone',n:'مخروط',d:'المخروط',ex:'🍦 🎉'}];
+const SCOL=['#ff5fa2','#3a86ff','#ff9f1c','#2ec4b6','#8338ec','#5cc93f','#f4b400','#ff4d6d'];
+let gid=0;
+function shapeSVG(k,col,size=110,rot=0){const id='g'+(gid++);let b='';const st='stroke="rgba(0,0,0,.18)" stroke-width="3" stroke-linejoin="round"';
+ switch(k){
+ case 'circle':b=`<circle cx="50" cy="50" r="40" fill="${col}" ${st}/>`;break;
+ case 'square':b=`<rect x="14" y="14" width="72" height="72" fill="${col}" ${st}/>`;break;
+ case 'rect':b=`<rect x="3" y="28" width="94" height="44" fill="${col}" ${st}/>`;break;
+ case 'triangle':b=`<polygon points="50,8 93,88 7,88" fill="${col}" ${st}/>`;break;
+ case 'cube':b=`<polygon points="15,35 35,15 85,15 65,35" fill="${col}" opacity=".7" ${st}/><polygon points="65,35 85,15 85,65 65,85" fill="${col}" opacity=".5" ${st}/><rect x="15" y="35" width="50" height="50" fill="${col}" ${st}/>`;break;
+ case 'sphere':b=`<defs><radialGradient id="${id}" cx="35%" cy="32%"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="${col}"/><stop offset="1" stop-color="${col}" stop-opacity=".7"/></radialGradient></defs><circle cx="50" cy="50" r="40" fill="url(#${id})"/>`;break;
+ case 'cyl':b=`<path d="M20 20 L20 80 A30 10 0 0 0 80 80 L80 20 Z" fill="${col}" ${st}/><ellipse cx="50" cy="20" rx="30" ry="10" fill="${col}" opacity=".6" stroke="#fff" stroke-width="2"/>`;break;
+ case 'cone':b=`<path d="M50 8 L85 78 A35 12 0 0 1 15 78 Z" fill="${col}" ${st}/><path d="M15 78 A35 12 0 0 1 85 78" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 4"/>`;break;}
+ return `<svg viewBox="0 0 100 100" width="${size}" height="${size}" style="transform:rotate(${rot}deg);overflow:visible">${b}</svg>`}
+
+/* ========== بناء الأسئلة ========== */
+function nOpts(ans){const s=new Set([ans]);const sw=ans>=10&&ans<100&&ans%10?(ans%10)*10+Math.floor(ans/10):-1;
+ const c=ans<=20?shuffle([ans+1,ans-1,ans+2,ans-2,ans+3,ans-3]):shuffle([ans+1,ans-1,ans+10,ans-10,sw]).concat([ans+2,ans-2]);
+ c.forEach(x=>{if(s.size<4&&x>=0&&x<=100&&x!==ans)s.add(x)});let k=4;while(s.size<4)s.add(ans+k++);
+ return shuffle([...s]).map(v=>({v,html:N(v)}))}
+function digitOpts(ans,extra){const s=new Set([ans]);if(extra!=null&&extra!==ans)s.add(extra);while(s.size<4)s.add(rnd(0,9));return shuffle([...s]).map(v=>({v,html:N(v)}))}
+function wordOpts(ans,pool){const s=new Set([ans]);while(s.size<Math.min(4,pool.length))s.add(pick(pool));return shuffle([...s])}
+
+function mkCmp(a,b){const r=rel(a,b),sv=Math.max(a,b)<=20,e1=pick(EMO),e2=pick(EMO);
+ const side=(n,e,c)=>`<div class="col">${sv?`<div class="group">${groupHTML(n,e)}</div>`:blocks(n)}<div class="numtag" style="background:${c}">${N(n)}</div></div>`;
+ return{k:'c'+a+'_'+b,instr:'اختر الرمز المناسب 🐊',
+  vis:`<div class="row cmprow">${side(a,e1,'var(--blue)')}<div class="sym" id="qMark" dir="ltr">؟</div>${side(b,e2,'var(--pink)')}</div>`,
+  opts:['gt','lt','eq'].map(x=>({v:x,html:`<span dir="ltr">${GLYPH[x]}</span><small>${RELW[x]}</small>`})),ans:r,reveal:GLYPH[r],
+  hint:sv?'💡 فم التمساح 🐊 مفتوح دائماً نحو العدد الأكبر، وإذا تساوى العددان نضع (=)':'💡 قارن العشرات (الأعمدة الزرقاء) أولاً، فإذا تساوت قارن الآحاد (المكعبات البرتقالية)',
+  speak:`قارن بين ${nw(a)} و ${nw(b)}`}}
+function mkBig(a,b,want){const sv=Math.max(a,b)<=20,e1=pick(EMO),e2=pick(EMO);const ans=want==='big'?(a>b?0:1):(a<b?0:1);
+ const card=(n,i)=>`<div class="pk col" onclick="answer('${i}',this)">${sv?`<div class="group">${groupHTML(n,i?e2:e1)}</div>`:blocks(n)}<div class="numtag" style="background:${i?'var(--pink)':'var(--blue)'}">${N(n)}</div></div>`;
+ return{k:'b'+a+'_'+b,instr:want==='big'?'اضغط على العدد الأكبر 👆':'اضغط على العدد الأصغر 👆',vis:`<div class="row cmprow">${card(a,0)}${card(b,1)}</div>`,ans,
+  hint:'💡 العدد الذي فيه عشرات أكثر هو الأكبر، وإذا تساوت العشرات ننظر إلى الآحاد',speak:want==='big'?'اضغط على العدد الأكبر':'اضغط على العدد الأصغر'}}
+function mkAdd(a,b,miss){const s=a+b,sv=s<=20,e1=pick(EMO),e2=pick(EMO);let vis;
+ if(sv)vis=`<div class="row"><div class="group">${groupHTML(a,e1)}</div><div class="opsign">+</div><div class="group">${miss?groupHTML(0,e2,{ghost:b}).replace(/<span style="opacity[^<]*<\/span>/,''):groupHTML(b,e2)}</div></div>`;
+ else vis=`<div class="row">${blocks(a)}<div class="opsign">+</div>${miss?'<div class="blk" style="font-size:44px;font-weight:800;color:var(--orange);align-items:center">؟</div>':blocks(b)}</div>`;
+ const ans=miss?b:s;
+ return{k:'a'+a+'_'+b+(miss?'m':''),instr:miss?'ما العدد الناقص؟ 🤔':'كم المجموع؟ ➕',vis,
+  eq:miss?eqHTML([N(a),'+','؟','=',N(s)],2):eqHTML([N(a),'+',N(b),'=','؟'],4),opts:nOpts(ans),ans,reveal:N(ans),
+  hint:miss?'💡 ابدأ من العدد الأول وعُدّ للأمام حتى تصل إلى المجموع':(sv?'💡 عُدّ كل الأشياء معاً، أو ابدأ من العدد الأكبر وعُدّ للأمام':'💡 اجمع الآحاد مع الآحاد، ثم العشرات مع العشرات'),
+  speak:miss?`${nw(a)} زائد كم يساوي ${nw(s)}`:`${nw(a)} زائد ${nw(b)} يساوي كم`}}
+function mkSub(a,b){const d=a-b,e=pick(EMO);let vis;
+ if(a<=20)vis=`<div class="row"><div class="group" style="max-width:360px">${groupHTML(a,e,{crossFrom:a-b})}</div></div>`;
+ else vis=`<div class="row">${blocks(a,b%10<=a%10?{t:Math.floor(b/10),o:b%10}:null)}</div>`;
+ return{k:'s'+a+'_'+b,instr:'كم يتبقى؟ ➖',vis,eq:eqHTML([N(a),'−',N(b),'=','؟'],4),opts:nOpts(d),ans:d,reveal:N(d),
+  hint:a<=20?'💡 عُدّ الأشياء التي لم تُشطب ✖':'💡 اطرح الآحاد من الآحاد، ثم العشرات من العشرات (القطع المشطوبة هي المطروحة)',speak:`${nw(a)} ناقص ${nw(b)} يساوي كم`}}
+/* العشرات والآحاد */
+function mkBlocksNum(n){return{k:'p'+n,instr:'كم العدد؟ 🧱',vis:`<div class="row">${blocks(n)}</div><p class="muted">العمود الأزرق = عشرة، المكعب البرتقالي = واحد</p>`,
+ eq:eqHTML(['؟'],0),opts:nOpts(n),ans:n,reveal:N(n),hint:'💡 عُدّ الأعمدة بالعشرات (عشرة، عشرون، ثلاثون...) ثم أضف المكعبات واحداً واحداً',speak:'كم العدد'}}
+function mkDigit(n,w){const t=Math.floor(n/10),o=n%10,ans=w==='t'?t:o;
+ return{k:'d'+n+w,instr:w==='t'?`كم عدد العشرات في العدد ${N(n)}؟`:`كم عدد الآحاد في العدد ${N(n)}؟`,
+  vis:`<div class="row"><div class="bignum">${N(n)}</div>${blocks(n)}</div>${pvt(t,o,w)}`,opts:digitOpts(ans,w==='t'?o:t),ans,reveal:N(ans),
+  hint:'💡 الرقم على اليسار يمثّل العشرات، والرقم على اليمين يمثّل الآحاد',speak:w==='t'?`كم عدد العشرات في العدد ${nw(n)}`:`كم عدد الآحاد في العدد ${nw(n)}`}}
+function mkTensOf(n){const t=n/10;return{k:'tt'+n,instr:`كم عشرة في العدد ${N(n)}؟`,vis:`<div class="row"><div class="bignum">${N(n)}</div>${blocks(n)}</div>`,
+ opts:digitOpts(t),ans:t,hint:'💡 عُدّ الأعمدة الزرقاء، كل عمود عشرة',speak:`كم عشرة في العدد ${nw(n)}`}}
+function mkExpand(n){const t=Math.floor(n/10),o=n%10;
+ if(Math.random()<.5)return{k:'e'+n,instr:'كم الناتج؟ 🧩',vis:'',eq:eqHTML([N(t*10),'+',N(o),'=','؟'],4),opts:nOpts(n),ans:n,reveal:N(n),
+  hint:'💡 ضع رقم العشرات على اليسار ورقم الآحاد على اليمين',speak:`${nw(t*10)} زائد ${nw(o)} يساوي كم`};
+ return{k:'f'+n,instr:`${N(t)} عشرات و ${N(o)} آحاد = ؟`,vis:pvt(t,o),eq:eqHTML(['؟'],0),opts:nOpts(n),ans:n,reveal:N(n),
+  hint:'💡 اقرأ الجدول: رقم العشرات ثم رقم الآحاد يكوّنان العدد',speak:`${nw(t)} عشرات و ${nw(o)} آحاد يساوي كم`}}
+/* الأعداد حتى ١٠٠ */
+function mkSeq(arr,qi,instr,hint){const ans=arr[qi];return{k:'q'+arr.join('-')+qi,instr,vis:trainHTML(arr,qi),opts:nOpts(ans),ans,reveal:N(ans),hint,speak:instr}}
+function mkChart(){const c=rnd(1,8)*10+rnd(2,9);const cells=[c-11,c-10,c-9,c-1,c,c+1,c+9,c+10,c+11];const hi=rnd(0,8);
+ return{k:'h'+c+hi,instr:'ما العدد المخفي في لوحة المئة؟ 💯',vis:`<div class="hcw">${cells.map((v,i)=>`<div class="${i===4?'mid':''}${i===hi?' q':''}"${i===hi?' id="qMark"':''}>${i===hi?'؟':N(v)}</div>`).join('')}</div>`,
+  opts:nOpts(cells[hi]),ans:cells[hi],reveal:N(cells[hi]),hint:'💡 العدد الذي على اليسار يزيد واحداً، والعدد الذي تحته يزيد عشرة',speak:'ما العدد المخفي في لوحة المئة'}}
+/* الترتيب */
+function mkOrdWho(k,n){const arr=shuffle(ANI.slice()).slice(0,k);return{instr:`اضغط على الحيوان ${ORD[n]} في الطابور 👆`,vis:lineHTML(arr,true),ans:n,after:showOrdLabels,
+ hint:'💡 نبدأ العدّ من خط البداية 🏁 على اليمين: الأول، الثاني، الثالث...',speak:`اضغط على الحيوان ${ORD[n]}`}}
+function mkOrdWhat(k,i){const arr=shuffle(ANI.slice()).slice(0,k);const pool=[...Array(k).keys()];
+ return{k:'w'+k+i,instr:`ما ترتيب ${arr[i]} في الطابور؟`,vis:lineHTML(arr,false),opts:wordOpts(i,pool).map(v=>({v,html:`<span class="w">${ORD[v]}</span>`})),ans:i,after:showOrdLabels,
+ hint:'💡 ضع إصبعك على أول حيوان بعد 🏁 وعُدّ: الأول، الثاني، الثالث...',speak:'ما ترتيب هذا الحيوان في الطابور'}}
+function mkOrdRel(k){const arr=shuffle(ANI.slice()).slice(0,k);const n=rnd(1,k-2);const after=Math.random()<.5;
+ return{instr:after?`اضغط على الحيوان الذي يقف بعد ${ORD[n]} مباشرةً 👆`:`اضغط على الحيوان الذي يقف قبل ${ORD[n]} مباشرةً 👆`,vis:lineHTML(arr,true),ans:after?n+1:n-1,after:showOrdLabels,
+ hint:`💡 جد الحيوان ${ORD[n]} أولاً، ثم انظر إلى الذي ${after?'خلفه (يساره)':'أمامه (يمينه)'}`,speak:after?`اضغط على الحيوان الذي يقف بعد ${ORD[n]}`:`اضغط على الحيوان الذي يقف قبل ${ORD[n]}`}}
+function mkOrdLast(k){const arr=shuffle(ANI.slice()).slice(0,k);const pool=[...Array(k).keys()];
+ return{k:'L'+k,instr:'ما ترتيب الحيوان الأخير في الطابور؟',vis:lineHTML(arr,false),opts:wordOpts(k-1,pool).map(v=>({v,html:`<span class="w">${ORD[v]}</span>`})),ans:k-1,after:showOrdLabels,
+ hint:'💡 الأخير هو الأبعد عن خط البداية 🏁، عُدّ الحيوانات كلها',speak:'ما ترتيب الحيوان الأخير'}}
+/* الأشكال */
+function mkShName(){const s=pick(SH2);return{k:'n'+s.k+rnd(0,9),instr:'ما اسم هذا الشكل؟ 🔍',vis:`<div class="row">${shapeSVG(s.k,pick(SCOL),130)}</div>`,
+ opts:shuffle(SH2.slice()).map(x=>({v:x.k,html:`<span class="w">${x.n}</span>`})),ans:s.k,
+ hint:'💡 الدائرة مدوّرة، المثلث له ٣ أضلاع، المربع ٤ أضلاع متساوية، المستطيل ضلعان طويلان وضلعان قصيران',speak:'ما اسم هذا الشكل'}}
+function mkShFind(set){const arr=shuffle(set.slice());const t=pick(arr);const cols=shuffle(SCOL.slice());
+ return{k:'F'+t.k+arr.map(x=>x.k).join(''),instr:`اضغط على ${t.d} 👆`,vis:`<div class="row">${arr.map((s,i)=>`<div class="pk" onclick="answer('${s.k}',this)">${shapeSVG(s.k,cols[i],90)}</div>`).join('')}</div>`,ans:t.k,
+ hint:set===SH3?'💡 الكرة مدوّرة من كل الجهات، المكعب مثل حجر النرد، الأسطوانة مثل علبة العصير، المخروط مثل قمع الآيس كريم':'💡 تذكّر: المثلث ٣ أضلاع، المربع أضلاعه الأربعة متساوية، المستطيل طويل',speak:`اضغط على ${t.d}`}}
+function mkShSides(){const s=pick(SH2.slice(1));const w=Math.random()<.5?'s':'c';
+ return{k:'S'+s.k+w,instr:w==='s'?`كم عدد أضلاع ${s.d}؟`:`كم عدد رؤوس ${s.d}؟`,vis:`<div class="row">${shapeSVG(s.k,pick(SCOL),130)}</div>`,
+ opts:shuffle([0,3,4,5]).map(v=>({v,html:N(v)})),ans:s[w],hint:w==='s'?'💡 الضلع هو الخط المستقيم، مرّر إصبعك على كل خط وعُدّ':'💡 الرأس هو الزاوية المدبّبة، عُدّ الزوايا',
+ speak:w==='s'?`كم عدد أضلاع ${s.d}`:`كم عدد رؤوس ${s.d}`}}
+function mkSolid(){const r=Math.random();if(r<.35){const s=pick(SH3);return{k:'D'+s.k,instr:'ما اسم هذا المجسّم؟ 🧊',vis:`<div class="row">${shapeSVG(s.k,pick(SCOL),130)}</div>`,
+  opts:shuffle(SH3.slice()).map(x=>({v:x.k,html:`<span class="w">${x.n}</span>`})),ans:s.k,hint:'💡 الكرة مدوّرة، المكعب مثل النرد، الأسطوانة مثل العلبة، المخروط مثل قمع الآيس كريم',speak:'ما اسم هذا المجسم'}}
+ if(r<.7){const s=pick(SH3),e=pick(s.ex.split(' '));const cols=shuffle(SCOL.slice());return{k:'E'+e,instr:`أيّ مجسّم يشبه ${e} ؟`,vis:`<div class="row"><span style="font-size:90px">${e}</span></div>`,
+  opts:shuffle(SH3.slice()).map((x,i)=>({v:x.k,html:shapeSVG(x.k,cols[i],60)})),ow:true,ans:s.k,hint:'💡 انظر إلى شكل الشيء: هل هو مدوّر؟ هل له وجوه مربعة؟ هل له رأس مدبّب؟',speak:'أي مجسم يشبه هذا الشيء'}}
+ return mkShFind(SH3)}
+function mkShCount(){const t=pick(SH2);const c=rnd(2,5);const others=SH2.filter(x=>x!==t);let items=[];for(let i=0;i<c;i++)items.push(t);
+ for(let i=0,m=rnd(4,6);i<m;i++)items.push(pick(others));items=shuffle(items);
+ return{k:'C'+t.k+c,instr:`كم عدد ${t.pl} في الصورة؟`,vis:`<div class="scene">${items.map(s=>`<span data-t="${s===t?1:0}">${shapeSVG(s.k,pick(SCOL),54,rnd(-12,12))}</span>`).join('')}</div>`,
+ opts:nOpts(c),ans:c,after:()=>document.querySelectorAll('.scene span[data-t="1"]').forEach(e=>e.classList.add('tgt')),
+ hint:'💡 أشِر إلى كل شكل بإصبعك وعُدّ بهدوء',speak:`كم عدد ${t.pl} في الصورة`}}
+
+/* القيمة المكانية */
+function digitsHTML(n,opt={}){const t=Math.floor(n/10),o=n%10;
+ const d=(v,w)=>{const c=['dg'];if(opt.color)c.push(w);if(opt.hl===w)c.push('hl');if(opt.pick)c.push('pk');
+  return `<div class="dgc"><div class="${c.join(' ')}" data-w="${w}"${opt.pick?` onclick="answer('${w}',this)"`:''}>${N(v)}</div>${opt.labels?`<span class="dgl ${w}">${w==='t'?'العشرات':'الآحاد'}</span>`:''}</div>`};
+ return `<div class="dgs">${d(t,'t')}${d(o,'o')}</div>`}
+function colorDigits(n){const e=$('#qVis .dgs');if(e)e.outerHTML=digitsHTML(n,{color:true,labels:true})}
+function abacusSVG(t,o,w=220){let s=`<svg class="abacus" viewBox="0 0 240 232" width="${w}" height="${w*232/240}"><rect x="20" y="188" width="200" height="16" rx="6" fill="#8d5524"/>`;
+ [[70,t,'#3a86ff','العشرات'],[170,o,'#ff9f1c','الآحاد']].forEach(([x,c,col,l])=>{s+=`<rect x="${x-4}" y="14" width="8" height="176" rx="4" fill="#c9ad8f"/>`;
+  for(let i=0;i<c;i++)s+=`<ellipse class="pop" cx="${x}" cy="${176-i*18}" rx="24" ry="9" fill="${col}" stroke="rgba(0,0,0,.25)" stroke-width="2"/>`;
+  s+=`<text x="${x}" y="226" text-anchor="middle" font-size="19" font-weight="800" fill="${col}">${l}</text>`});return s+'</svg>'}
+function pvNum(){let n;do{n=rnd(11,99)}while(n%10===0||n%10===Math.floor(n/10));return n}
+function mkPlaceOf(n,w){return{k:'P'+n+w,instr:'في أيّ منزلة يقع الرقم الملوَّن بالأصفر؟ 🟡',vis:digitsHTML(n,{hl:w}),
+ opts:[{v:'t',html:'<span class="w">العشرات</span>'},{v:'o',html:'<span class="w">الآحاد</span>'}],ans:w,after:()=>colorDigits(n),
+ hint:'💡 الرقم على اليمين في منزلة الآحاد، والرقم على اليسار في منزلة العشرات',speak:'في أي منزلة يقع الرقم الملون'}}
+function mkColorDigit(n,w){return{k:'Q'+n+w,instr:w==='t'?`🖍️ اضغط لتلوين رقم العشرات في العدد ${N(n)}`:`🖍️ اضغط لتلوين رقم الآحاد في العدد ${N(n)}`,vis:digitsHTML(n,{pick:true}),ans:w,after:()=>colorDigits(n),
+ hint:'💡 العشرات على اليسار ⬅️ والآحاد على اليمين ➡️',speak:w==='t'?'لون رقم العشرات':'لون رقم الآحاد'}}
+function mkValue(n,w){const t=Math.floor(n/10),o=n%10,dig=w==='t'?t:o,ans=w==='t'?t*10:o;
+ return{k:'V'+n+w,instr:`ما قيمة الرقم ${N(dig)} في العدد ${N(n)}؟`,vis:digitsHTML(n,{color:true,labels:true})+`<div class="row">${blocks(n)}</div>`,
+ opts:shuffle([t,t*10,o,o*10]).map(v=>({v,html:N(v)})),ans,hint:'💡 رقم العشرات قيمته عشرات (مثل ٤ ← ٤٠)، ورقم الآحاد قيمته كما هو',speak:`ما قيمة الرقم ${nw(dig)} في العدد ${nw(n)}`}}
+function mkAbacus(n){const t=Math.floor(n/10),o=n%10;
+ if(Math.random()<.6)return{k:'A'+n,instr:'ما العدد على المعداد؟ 🧮',vis:`<div class="row">${abacusSVG(t,o)}</div>`,eq:eqHTML(['؟'],0),opts:nOpts(n),ans:n,reveal:N(n),
+  hint:'💡 عُدّ الخرز الأزرق (العشرات) ثم الخرز البرتقالي (الآحاد)',speak:'ما العدد على المعداد'};
+ const w=Math.random()<.5?'t':'o',ans=w==='t'?t:o;
+ return{k:'B'+n+w,instr:`كم خرزة نضع في عمود ${w==='t'?'العشرات':'الآحاد'} لنكوّن العدد ${N(n)}؟`,vis:`<div class="row">${digitsHTML(n,{color:true,labels:true})}${abacusSVG(0,0,150)}</div>`,
+  opts:digitOpts(ans,w==='t'?o:t),ans,after:()=>{const a=$('#qVis .abacus');if(a)a.outerHTML=abacusSVG(t,o,150)},hint:'💡 عدد الخرز يساوي الرقم الموجود في تلك المنزلة',speak:`كم خرزة نضع في عمود ${w==='t'?'العشرات':'الآحاد'}`}}
+function mkExp2(n){const t=Math.floor(n/10),o=n%10,r=Math.random();
+ if(r<.12)return{k:'H100',instr:'العدد ١٠٠ فيه كم عشرة؟ 💯',vis:`<div class="row">${blocks(100)}</div>`,opts:nOpts(10),ans:10,hint:'💡 عُدّ الأعمدة الزرقاء: عشرة، عشرون... حتى مئة',speak:'العدد مئة فيه كم عشرة'};
+ const v=digitsHTML(n,{color:true,labels:true});
+ if(r<.45)return{k:'X'+n,instr:'أكمل الصيغة الموسّعة 🧩',vis:v,eq:eqHTML([N(n),'=',N(t*10),'+','؟'],4),opts:nOpts(o),ans:o,reveal:N(o),hint:'💡 العدد = قيمة رقم العشرات + قيمة رقم الآحاد',speak:`${nw(n)} يساوي ${nw(t*10)} زائد كم`};
+ if(r<.75)return{k:'Y'+n,instr:'أكمل الصيغة الموسّعة 🧩',vis:v,eq:eqHTML([N(n),'=','؟','+',N(o)],2),opts:nOpts(t*10),ans:t*10,reveal:N(t*10),hint:'💡 قيمة رقم العشرات = الرقم ومعه صفر',speak:`${nw(n)} يساوي كم زائد ${nw(o)}`};
+ return{k:'Z'+n,instr:'كم الناتج؟ 🧩',vis:'',eq:eqHTML([N(o),'+',N(t*10),'=','؟'],4),opts:nOpts(n),ans:n,reveal:N(n),hint:'💡 العشرات تُكتب على اليسار والآحاد على اليمين مهما كان ترتيب الجمع',speak:`${nw(o)} زائد ${nw(t*10)} يساوي كم`}}
+
+/* ========== المهارات والمستويات (٥ × ١٠ = ٥٠ تمريناً) ========== */
+const SK={
+ cmp:{t:'أكبر، أصغر، يساوي',e:'🐊',c:'c2',lesson:'lcmp',L:[
+  ['حتى ١٠',()=>{const a=rnd(0,10);return mkCmp(a,Math.random()<.2?a:rnd(0,10))}],
+  ['حتى ٢٠',()=>{const a=rnd(0,20);return mkCmp(a,Math.random()<.15?a:rnd(0,20))}],
+  ['حتى ٥٠',()=>{const a=rnd(10,50);return mkCmp(a,Math.random()<.15?a:rnd(10,50))}],
+  ['حتى ١٠٠ (انتبه للآحاد)',()=>{const t=rnd(1,9),a=t*10+rnd(0,9),o=a%10;if(Math.random()<.35&&o&&o!==t)return mkCmp(a,o*10+t);return mkCmp(a,Math.random()<.2?a:t*10+rnd(0,9))}],
+  ['حتى ١٠٠ (منوّع)',()=>{const a=rnd(0,100);let b;do{b=rnd(0,100)}while(b===a);return Math.random()<.5?mkBig(a,b,Math.random()<.5?'big':'small'):mkCmp(a,Math.random()<.15?a:b)}]]},
+ add:{t:'الجمع',e:'➕',c:'c1',lesson:'ladd',L:[
+  ['المجموع حتى ١٠',()=>{const m=Math.random()<.2,a=rnd(1,9);return mkAdd(a,rnd(m?1:0,10-a),m)}],
+  ['المجموع حتى ٢٠',()=>{const m=Math.random()<.2,a=rnd(2,10);return mkAdd(a,rnd(Math.max(1,11-a),20-a),m)}],
+  ['جمع العشرات (٢٠+٣٠)',()=>{const ta=rnd(1,8);return mkAdd(ta*10,rnd(1,9-ta)*10,Math.random()<.15)}],
+  ['عدد من رقمين + رقم واحد',()=>{const o=rnd(0,8),a=rnd(1,8)*10+o;return mkAdd(a,rnd(1,9-o),false)}],
+  ['عددان من رقمين حتى ١٠٠',()=>{const ta=rnd(1,8),tb=rnd(1,9-ta),oa=rnd(0,9),ob=rnd(0,9-oa);return mkAdd(ta*10+oa,tb*10+ob,Math.random()<.2)}]]},
+ sub:{t:'الطرح',e:'➖',c:'c3',lesson:'lsub',L:[
+  ['ضمن ١٠',()=>{const a=rnd(1,10);return mkSub(a,rnd(0,a))}],
+  ['ضمن ٢٠',()=>{const a=rnd(11,20);return mkSub(a,rnd(1,a))}],
+  ['طرح العشرات (٥٠−٢٠)',()=>{const ta=rnd(2,9);return mkSub(ta*10,rnd(1,ta)*10)}],
+  ['عدد من رقمين − رقم واحد',()=>{const o=rnd(1,9);return mkSub(rnd(2,9)*10+o,rnd(1,o))}],
+  ['عددان من رقمين حتى ١٠٠',()=>{const ta=rnd(2,9),tb=rnd(1,ta-1),oa=rnd(0,9),ob=rnd(0,oa);return mkSub(ta*10+oa,tb*10+ob)}]]},
+ place:{t:'العشرات والآحاد',e:'🧱',c:'c7',lesson:'lplace',L:[
+  ['الأعداد من ١٠ إلى ١٩',()=>mkBlocksNum(rnd(10,19))],
+  ['العشرات الكاملة',()=>{const n=rnd(1,9)*10;return Math.random()<.5?mkBlocksNum(n):mkTensOf(n)}],
+  ['تكوين الأعداد حتى ٩٩',()=>mkBlocksNum(rnd(21,99))],
+  ['كم عشرة؟ كم آحاداً؟',()=>mkDigit(rnd(11,99),Math.random()<.5?'t':'o')],
+  ['العدد من عشراته وآحاده',()=>mkExpand(rnd(11,99))]]},
+ pv:{t:'القيمة المكانية',e:'🔢',c:'c4',lesson:'lpv',L:[
+  ['منزلة الرقم',()=>mkPlaceOf(rnd(11,99),Math.random()<.5?'t':'o')],
+  ['لوّن الرقم',()=>mkColorDigit(rnd(11,99),Math.random()<.5?'t':'o')],
+  ['قيمة الرقم',()=>mkValue(pvNum(),Math.random()<.5?'t':'o')],
+  ['المعداد',()=>mkAbacus(rnd(11,99))],
+  ['الصيغة الموسّعة',()=>{let n;do{n=rnd(11,99)}while(n%10===0);return mkExp2(n)}]]},
+ n100:{t:'الأعداد حتى ١٠٠',e:'💯',c:'c9',lesson:'lchart',L:[
+  ['العدد التالي',()=>{const n=rnd(1,60);return mkSeq([n-1,n,n+1],2,`ما العدد الذي يأتي بعد ${N(n)}؟`,'💡 العدد التالي يزيد واحداً')}],
+  ['العدد السابق',()=>{const n=rnd(2,99);return mkSeq([n-1,n,n+1],0,`ما العدد الذي يأتي قبل ${N(n)}؟`,'💡 العدد السابق ينقص واحداً')}],
+  ['العدد بين عددين',()=>{const n=rnd(2,99);return mkSeq([n-1,n,n+1],1,`ما العدد الذي بين ${N(n-1)} و ${N(n+1)}؟`,'💡 عُدّ: العدد الأول، ثم الذي بعده مباشرةً')}],
+  ['العدّ بالعشرات',()=>{const off=Math.random()<.5?0:rnd(1,9),st=off+rnd(off?0:1,5)*10;const arr=[0,1,2,3,4].map(i=>st+i*10);return mkSeq(arr,rnd(0,4),'أكمل العدّ بالعشرات 🔟','💡 كل عربة تزيد عشرة عن التي قبلها، رقم الآحاد لا يتغيّر')}],
+  ['لوحة المئة',()=>mkChart()]]},
+ ord:{t:'الترتيب (الأول، الثاني...)',e:'🏁',c:'c8',lesson:'lord',L:[
+  ['حتى الثالث',()=>mkOrdWho(rnd(3,5),rnd(0,2))],
+  ['حتى الخامس',()=>Math.random()<.5?mkOrdWho(5,rnd(0,4)):mkOrdWhat(5,rnd(0,4))],
+  ['حتى العاشر',()=>mkOrdWho(10,rnd(0,9))],
+  ['ما ترتيبه؟',()=>mkOrdWhat(10,rnd(0,9))],
+  ['قبل وبعد والأخير',()=>{const r=Math.random();return r<.45?mkOrdRel(rnd(6,10)):r<.6?mkOrdLast(rnd(5,10)):r<.8?mkOrdWhat(10,rnd(0,9)):mkOrdWho(10,rnd(0,9))}]]},
+ shape:{t:'الأشكال الهندسية',e:'🔺',c:'c10',lesson:'lshape',L:[
+  ['أسماء الأشكال',()=>mkShName()],
+  ['ابحث عن الشكل',()=>mkShFind(SH2)],
+  ['الأضلاع والرؤوس',()=>mkShSides()],
+  ['المجسّمات',()=>mkSolid()],
+  ['عُدّ الأشكال',()=>mkShCount()]]}
+};
+
+/* ========== الرئيسية والمهارة ========== */
+function renderHome(){let h=`<button class="card c6" onclick="go('learn')"><span class="e">📚</span><span class="t">تعلّم معي</span><span class="s">٩ دروس تفاعلية</span></button>
+ <button class="card" style="background:linear-gradient(135deg,#ff5fa2,#ffd60a,#2ec4b6,#3a86ff)" onclick="openDraw('task')"><span class="e">🎨</span><span class="t">مرسم الأطفال</span><span class="s">لوّن وارسم وتعلّم</span></button>`;
+ for(const k in SK){const s=SK[k];let st=0;for(let i=0;i<5;i++)st+=prog[k+i]||0;
+  h+=`<button class="card ${s.c}" onclick="openSkill('${k}')"><span class="e">${s.e}</span><span class="t">${s.t}</span><span class="s">٥٠ تمريناً • ⭐ ${N(st)}/${N(15)}</span></button>`}
+ h+=`<button class="card c4" onclick="startChallenge()"><span class="e">🎯</span><span class="t">تحدي المزيج</span><span class="s">من كل المهارات</span></button>
+ <button class="card c5" onclick="startCustom()"><span class="e">👩‍🏫</span><span class="t">تمارين المعلم</span><span class="s">${custom.length?'عددها '+N(custom.length):'لم تُضف بعد'}</span></button>
+ <button class="card c7" onclick="openTeacher()" style="background:linear-gradient(135deg,#94a3b8,#64748b)"><span class="e">⚙️</span><span class="t">لوحة المعلم</span><span class="s">إضافة تمارين وإعدادات</span></button>`;
+ $('#homeGrid').innerHTML=h}
+function openSkill(k){renderSkill(k);if(S.forceIntro&&!introDone[k]){openIntro(k);return}go('skill')}
+function renderSkill(k){const s=SK[k];$('#skTitle').textContent=s.e+' '+s.t;
+ const lk=S.forceIntro&&!introDone[k];
+ $('#lvls').innerHTML=s.L.map((l,i)=>{const p=prog[k+i]||0;return `<button class="lvl l${i}${lk?' lock':''}" onclick="${lk?`openIntro('${k}')`:`startLevel('${k}',${i})`}">${lk?'🔒 ':''}<div><b>المستوى ${N(i+1)}: ${l[0]}</b><span>التمارين ${N(i*10+1)} – ${N(i*10+10)}</span></div><span class="st">${'⭐'.repeat(p)}${'☆'.repeat(3-p)}</span></button>`}).join('');
+ $('#skLesson').onclick=()=>openLesson(s.lesson);$('#skIntro').onclick=()=>openIntro(k)}
+
+/* ========== الجولة ========== */
+let R={};
+const PRAISE=['أحسنت! 🌟','رائع! 🎉','ممتاز! 👏','بطل! 🏆','عبقري! 🧠','شاطر! 💪','مبدع! 🌈'];
+const OOPS=['حاول مرة أخرى 💪','قريب! فكّر مرة ثانية 🤔','لا بأس، جرّب مجدداً 🌈'];
+function startLevel(k,l){if(l>4)return;R={mode:'level',sk:k,l,total:10,i:0,score:0,seen:new Set(),demo:true};
+ $('#modeLbl').textContent=`${SK[k].e} ${SK[k].t} • المستوى ${N(l+1)}`;go('play');nextQ();runDemo()}
+function runDemo(){const q=R.q;$('#play').classList.add('demo');$('#demoBar').style.display='none';
+ pTeach(`لنحلّ مثالاً من <b>${SK[R.sk].L[R.l][0]}</b> معاً أولاً 👀 انظر إليّ كيف أحلّه...`,'',true);
+ const myq=q;setTimeout(()=>{if(!R.demo||R.q!==myq)return;const el=findAns(myq);if(!el){endDemo();return}
+  moveHand(el,()=>{if(R.q!==myq)return;el.classList.add('right');const m=$('#qMark');if(m&&myq.reveal!=null){m.textContent=myq.reveal;m.classList.add('done')}
+   if(myq.after)myq.after();good();pTeach('هذا هو الجواب الصحيح ✅<br><small>'+(myq.hint||'').replace('💡','')+'</small>','happy',true);$('#demoBar').style.display='flex'})},2600)}
+function findAns(q){return [...document.querySelectorAll('#qVis [onclick],#qOpts [onclick]')].find(e=>(e.getAttribute('onclick')||'').startsWith(`answer('${q.ans}'`))}
+function moveHand(el,cb){el.scrollIntoView({block:'center',behavior:'smooth'});setTimeout(()=>{const h=document.createElement('div');h.className='hand';h.textContent='👆';
+ h.style.left=(innerWidth/2-28)+'px';h.style.top=(innerHeight-90)+'px';document.body.appendChild(h);
+ requestAnimationFrame(()=>{const r=el.getBoundingClientRect();h.style.left=(r.left+r.width/2-22)+'px';h.style.top=(r.top+r.height/2-6)+'px'});
+ setTimeout(()=>{h.classList.add('tap');pop();cb()},1000);setTimeout(()=>h.remove(),1900)},450)}
+function endDemo(){R.demo=false;$('#play').classList.remove('demo');$('#demoBar').style.display='none';nextQ();pTeach('الآن دورك يا بطل! 💪 أنا معك','happy',true)}
+function pTeach(t,mood,speak){$('#pSay').innerHTML=t;setMood('#pT',mood);if(speak)talk('#pT',t)}
+function startChallenge(){R={demo:false,mode:'mix',total:S.perRound,i:0,score:0,seen:new Set()};$('#modeLbl').textContent='🎯 تحدي المزيج';go('play');nextQ()}
+function startCustom(){if(!custom.length){toast('لا توجد تمارين بعد، أضفها من لوحة المعلم 👩‍🏫');return}
+ R={demo:false,mode:'custom',total:custom.length,i:0,score:0,seen:new Set(),list:shuffle(custom.slice())};$('#modeLbl').textContent='👩‍🏫 تمارين المعلم';go('play');nextQ()}
+function replay(){R.mode==='level'?startLevel(R.sk,R.l):R.mode==='mix'?startChallenge():startCustom()}
+function fromCustom(c){return c.type==='add'?mkAdd(c.a,c.b,false):c.type==='sub'?mkSub(c.a,c.b):mkCmp(c.a,c.b)}
+function genOne(){if(R.mode==='custom')return fromCustom(R.list[R.i]);
+ if(R.mode==='level')return SK[R.sk].L[R.l][1]();
+ if(S.mixCustom&&custom.length&&Math.random()<.25)return fromCustom(pick(custom));
+ const k=pick(Object.keys(SK));return SK[k].L[rnd(0,4)][1]()}
+function nextQ(){if(R.i>=R.total)return endRound();let q;for(let t=0;t<25;t++){q=genOne();const key=q.k||(q.instr+q.ans);if(!R.seen.has(key)){R.seen.add(key);break}}
+ R.q=q;R.tries=0;R.locked=false;
+ $('#fb').textContent='';$('#fb').className='fb';$('#hint').style.display='none';
+ $('#qInstr').textContent=q.instr;$('#qVis').innerHTML=q.vis||'';$('#qEq').innerHTML=q.eq||'';
+ $('#qOpts').innerHTML=(q.opts||[]).map((o,i)=>`<button class="opt o${i}${q.ow?' ow':''}" onclick="answer('${o.v}',this)">${o.html}</button>`).join('');
+ $('#progBar').style.width=(R.i/R.total*100)+'%';$('#progTxt').textContent=R.demo?'👀 مثال محلول مع المعلّمة نور':`السؤال ${N(R.i+1)} من ${N(R.total)}`;
+ if(!R.demo)pTeach(pick(['خذ وقتك وفكّر جيداً 😊','أنا معك، أنت تستطيع! 💪','ركّز يا بطل 👀','أنا متأكدة أنك تعرف الجواب 🌟','اقرأ السؤال جيداً ثم اختر 😊']),'',false)}
+function readQ(){say(R.q.speak||R.q.instr)}
+function answer(v,el){if(R.demo)return;if(R.locked||el.classList.contains('wrong'))return;const q=R.q;
+ if(String(v)===String(q.ans)){R.locked=true;el.classList.add('right');if(!R.tries){R.score++;stars++;updStars()}
+  good();confetti(R.tries?15:35);pTeach(pick(PRAISE),'happy',true);$('#fb').textContent=pick(PRAISE);$('#fb').className='fb good';
+  const m=$('#qMark');if(m&&q.reveal!=null){m.textContent=q.reveal;m.classList.add('done')}
+  if(q.after)q.after();setTimeout(()=>{R.i++;nextQ()},q.after?2000:1500)}
+ else{R.tries++;el.classList.add('wrong');bad();$('#fb').textContent=pick(OOPS);$('#fb').className='fb bad';
+  pTeach(pick(OOPS)+'<br><small>'+(q.hint||'')+'</small>','think',true)}}
+function endRound(){$('#progBar').style.width='100%';const p=R.score/R.total,n=p>=.9?3:p>=.6?2:1;
+ if(R.mode==='level'){const key=R.sk+R.l;prog[key]=Math.max(prog[key]||0,n);store.set('prog',prog)}
+ $('#endStars').innerHTML=[0,1,2].map(i=>`<span style="animation-delay:${i*.25}s;${i<n?'':'filter:grayscale(1);opacity:.3'}">⭐</span>`).join('');
+ $('#endTitle').textContent=n===3?'رائع جداً! أنت بطل الرياضيات 🏆':n===2?'أحسنت! أداء جميل 👏':'جيد! تدرّب أكثر وستصبح بطلاً 💪';
+ $('#endScore').textContent=`أجبت صحيحاً من المحاولة الأولى ${N(R.score)} من ${N(R.total)}`;
+ $('#nextLvlBtn').style.display=R.mode==='level'&&R.l<4?'':'none';
+ if(R.mode==='level')renderSkill(R.sk);go('end');hist=R.mode==='level'?['home','skill']:['home'];good();confetti(n*40)}
+
+/* ========== المعلّمة نور ========== */
+function teacherSVG(){return `<svg class="teacher" viewBox="0 0 200 232" role="img" aria-label="المعلّمة نور">
+<path d="M28 232 Q32 168 100 157 Q168 168 172 232 Z" fill="#3a86ff"/>
+<path d="M80 160 L100 188 L120 160 Z" fill="#fff"/><circle cx="100" cy="204" r="4.5" fill="#ffd60a"/><circle cx="100" cy="221" r="4.5" fill="#ffd60a"/>
+<g class="arm"><path d="M156 184 Q184 152 178 118" stroke="#3a86ff" stroke-width="19" stroke-linecap="round" fill="none"/><circle cx="178" cy="108" r="13" fill="#f3c6a0"/><path d="M170 100 v-10 M176 98 v-12 M182 98 v-11 M188 102 v-8" stroke="#f3c6a0" stroke-width="5" stroke-linecap="round"/></g>
+<path d="M100 20 C50 20 34 64 36 106 C38 152 58 176 100 178 C142 176 162 152 164 106 C166 64 150 20 100 20 Z" fill="#ff5fa2"/>
+<path d="M100 20 C70 20 54 36 46 60 C62 40 80 34 100 34 C120 34 138 40 154 60 C146 36 130 20 100 20Z" fill="#ff7fb6"/>
+<ellipse cx="100" cy="106" rx="40" ry="46" fill="#f6cfae"/>
+<path d="M57 96 C58 58 80 46 100 46 C120 46 142 58 143 96 C134 72 118 62 100 62 C82 62 66 72 57 96 Z" fill="#ff5fa2"/>
+<path d="M60 146 Q100 186 140 146 L146 168 Q100 196 54 168 Z" fill="#e0468a"/>
+<path class="brow" d="M74 86 Q83 80 92 85" stroke="#5a3d2b" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+<path class="brow" d="M108 85 Q117 80 126 86" stroke="#5a3d2b" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+<g class="eyes"><ellipse cx="84" cy="100" rx="5.5" ry="7" fill="#3d2c5e"/><ellipse cx="116" cy="100" rx="5.5" ry="7" fill="#3d2c5e"/><circle cx="86" cy="97" r="2" fill="#fff"/><circle cx="118" cy="97" r="2" fill="#fff"/></g>
+<circle cx="72" cy="118" r="8" fill="#ff8fa3" opacity=".45"/><circle cx="128" cy="118" r="8" fill="#ff8fa3" opacity=".45"/>
+<path d="M100 106 Q96 116 101 118" stroke="#d39a74" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<path class="m-smile" d="M88 128 Q100 140 112 128" stroke="#c0392b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+<path class="m-happy" d="M85 126 Q100 147 115 126 Z" fill="#c0392b"/>
+<ellipse class="m-o" cx="100" cy="131" rx="5" ry="6" fill="#c0392b"/>
+<ellipse class="m-talk" cx="100" cy="130" rx="9" ry="7.5" fill="#c0392b"/>
+</svg>`}
+function setMood(sel,m){const t=$(sel+' .teacher');if(!t)return;t.classList.remove('happy','think');if(m)t.classList.add(m)}
+function sayWith(txt,cb){if(!S.sound){setTimeout(cb,Math.min(5000,500+txt.length*55));return}
+ try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang='ar-SA';u.rate=.9;u.pitch=1.15;
+  const vs=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.startsWith('ar'));const v=vs.find(v=>/female|zeina|laila|hoda|salma|mariam|amira|layla|noura/i.test(v.name))||vs[0];
+  if(v)u.voice=v;u.onend=cb;u.onerror=cb;speechSynthesis.speak(u)}catch(e){cb()}}
+function talk(sel,t){const el=$(sel+' .teacher');if(!el)return;
+ const plain=t.replace(/<[^>]+>/g,' ').replace(/&gt;/g,' أكبر من ').replace(/&lt;/g,' أصغر من ').replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\uFE0F\u200D]/gu,'').replace(/\s+/g,' ');
+ el.classList.add('talking');clearTimeout(el._t);const stop=()=>el.classList.remove('talking');el._t=setTimeout(stop,Math.min(9000,700+plain.length*70));sayWith(plain,stop)}
+
+/* ========== المنصة التفاعلية (قبل التمارين) ========== */
+const IN={sk:null,i:0,done:false,say:''};
+function teach(t,mood){$('#inSay').innerHTML=t;setMood('#inTeacher',mood);talk('#inTeacher',t)}
+function teachAgain(){teach($('#inSay').innerHTML)}
+function stageHTML(h){const s=$('#inStage');s.innerHTML=h;return s}
+function onTap(sel,fn){$('#inStage').querySelectorAll(sel).forEach((e,i)=>e.addEventListener('click',()=>fn(e,i)))}
+function openIntro(k){IN.sk=k;IN.i=0;go('intro');showStep()}
+function showStep(){const L_=INTRO[IN.sk],st=L_[IN.i];IN.done=false;
+ $('#inDots').innerHTML=L_.map((_,i)=>`<span class="dot${i<IN.i?' done':i===IN.i?' on':''}"></span>`).join('');
+ $('#inStage').innerHTML='';setNext(false);$('#inNextBtn').textContent=st.end?'🚀 ابدأ التمارين':'التالي ⬅️';
+ $('#inPrev').style.visibility=IN.i?'visible':'hidden';$('#inSkip').style.display=(introDone[IN.sk]||!S.forceIntro)?'':'none';
+ IN.say=st.say;teach(st.say,'');st.run(()=>{IN.done=true;setNext(true)});window.scrollTo(0,0)}
+function setNext(on){const b=$('#inNextBtn');b.classList.toggle('glow',on);b.style.opacity=on?1:.5}
+function inNext(){if(!IN.done){teach('أكمل النشاط أولاً يا بطل 😊 أنا أنتظرك','think');return}click();if(INTRO[IN.sk][IN.i].end){finishIntro();return}IN.i++;showStep()}
+function inPrev(){if(IN.i>0){IN.i--;showStep()}}
+function finishIntro(){introDone[IN.sk]=true;store.set('intro',introDone);renderSkill(IN.sk);go('skill');hist=['home'];toast('فُتحت المستويات الخمسة 🔓 بالتوفيق!')}
+/* أدوات النشاطات */
+const opts3=(vals,ok)=>`<div class="row">${vals.map((v,i)=>`<button class="opt ch o${i}" ${v===ok?'data-ok="1"':''}>${typeof v==='number'?N(v):v}</button>`).join('')}</div>`;
+function chooseW(h,right,wrong,d){stageHTML(h);let fin=false;onTap('.ch',e=>{if(fin)return;
+ if(e.dataset.ok){fin=true;e.classList.add('right');good();confetti(25);teach(right,'happy');d()}else{e.classList.add('wrong');bad();teach(wrong,'think')}})}
+function tapCount(n,emo,d,after){const it=emo==='cube'?'<span class="bigcube"></span>':`<span style="font-size:42px">${emo}</span>`;
+ stageHTML(`<div class="row" style="gap:8px">${[...Array(n)].map(()=>`<span class="tapw">${it}</span>`).join('')}</div>`);let c=0;
+ onTap('.tapw',e=>{if(e.classList.contains('tapped'))return;c++;e.classList.add('tapped');e.insertAdjacentHTML('beforeend',`<span class="badge2">${N(c)}</span>`);pop();say(nw(c));
+  if(c===n){setTimeout(()=>{if(after)after();else teach(`${N(n)}! أحسنت العدّ 👏`,'happy');good();d()},700)}})}
+function tapRods(n,d){stageHTML(`<div class="row" style="gap:14px">${[...Array(n)].map(()=>`<span class="tapw">${blocks(10)}</span>`).join('')}</div><div class="sentence" id="rodS">؟</div>`);let c=0;
+ onTap('.tapw',e=>{if(e.classList.contains('tapped'))return;c++;e.classList.add('tapped');e.insertAdjacentHTML('beforeend',`<span class="badge2">${N(c*10)}</span>`);pop();say(nw(c*10));$('#rodS').textContent=[...Array(c)].map((_,i)=>N((i+1)*10)).join('، ');
+  if(c===n){teach(`${N(n)} أعمدة = ${N(n*10)} (${nw(n*10)}) 🎉 هكذا نعدّ بالعشرات!`,'happy');good();d()}})}
+function frogW(from,cnt,dir,done){const to=from+dir*cnt,lo=Math.max(0,Math.min(from,to)-1),hi=lo+8;let cur=from,j=0;
+ stageHTML(`<div class="nl" id="fl"></div><div class="ctrl"><button class="btn g" id="jmp">🐸 اقفز ${dir>0?'للأمام':'للخلف'}</button><span class="vcard t" id="jc">القفزات: ٠</span></div>`);
+ const draw=()=>{$('#fl').innerHTML=[...Array(hi-lo+1).keys()].map(k=>{const v=lo+k,jp=dir>0?(v>from&&v<=cur):(v<from&&v>=cur);return `<div class="tick${v===cur?' on':''}${jp?' jumped':''}"><span class="fr">${v===cur?'🐸':''}</span><span class="ln"></span><span class="tn">${N(v)}</span></div>`}).join('')};draw();
+ $('#jmp').onclick=()=>{if(j>=cnt)return;j++;cur+=dir;draw();tone([480+j*140],.12,'triangle');say(nw(cur));$('#jc').textContent='القفزات: '+N(j);if(j===cnt){$('#jmp').disabled=true;$('#jmp').style.opacity=.5;setTimeout(done,600)}}}
+function bigOpW(a,b,op,d){const ao=a%10,bo=b%10,at=Math.floor(a/10),bt=Math.floor(b/10),pl=op==='+',ro=pl?ao+bo:ao-bo,rt=pl?at+bt:at-bt,vw=pl?'اجمع':'اطرح',sg=pl?'+':'−';
+ stageHTML(`<div class="row">${blocks(a)}<div class="opsign">${sg}</div>${blocks(b)}</div>${eqHTML([N(a),sg,N(b),'=','؟'],4)}
+ <div class="pvt"><div class="pvh">العشرات</div><div class="pvh o">الآحاد</div><div class="pv q" id="rT">؟</div><div class="pv q" id="rO">؟</div></div>
+ <div class="ctrl"><button class="btn o" id="bo1">١- ${vw} الآحاد 🟠</button><button class="btn" id="bo2" style="opacity:.5">٢- ${vw} العشرات 🔵</button></div>`);let st=0;
+ $('#bo1').onclick=()=>{if(st)return;st=1;$('#rO').textContent=N(ro);$('#rO').classList.add('done');$('#bo2').style.opacity=1;good();teach(`الآحاد: ${N(ao)} ${sg} ${N(bo)} = ${N(ro)} 🟠 والآن العشرات!`,'happy')};
+ $('#bo2').onclick=()=>{if(st!==1){teach('نبدأ دائماً بالآحاد أولاً 🟠','think');return}st=2;$('#rT').textContent=N(rt);$('#rT').classList.add('done');const m=$('#qMark');m.textContent=N(rt*10+ro);m.classList.add('done');good();confetti(30);
+  teach(`العشرات: ${N(at)} ${sg} ${N(bt)} = ${N(rt)} 🔵 إذن ${N(a)} ${sg} ${N(b)} = ${N(rt*10+ro)} 🎉`,'happy');d()}}
+function flyW(n,k,d){stageHTML(`<div class="row"><div class="group" style="max-width:360px">${[...Array(n)].map(()=>`<span class="obj tapw" style="font-size:44px">🐦</span>`).join('')}</div></div><div class="sentence" id="flS">${N(n)} عصافير</div>`);let c=0;
+ onTap('.tapw',e=>{if(c>=k||e.classList.contains('out'))return;c++;e.classList.add('out');tone([700,1000],.07);$('#flS').textContent=`طار ${N(c)}، وبقي ${N(n-c)}`;
+  if(c===k){teach(`طار عصفوران 🕊️ وبقي ${N(n-k)} على الشجرة. هذا هو الطرح!`,'happy');good();d()}})}
+function housesHTML(t,o){const h=(w,lab,v)=>`<div class="house ${w}" data-w="${w}"><div class="roof"></div><div class="hb"><b>بيت ${lab}</b><div class="hslot">${v!=null?N(v):''}</div><div class="hval"></div></div></div>`;
+ return `<div class="houses">${h('t','العشرات',t)}${h('o','الآحاد',o)}</div>`}
+function housesPlace(n,d){const t=Math.floor(n/10),o=n%10;stageHTML(`<div class="row"><div class="bignum" style="font-size:70px">${N(n)}</div></div>${housesHTML()}<div class="row" id="chips"><button class="dchip" data-w="t">${N(t)}</button><button class="dchip" data-w="o">${N(o)}</button></div>`);
+ let sel=null,placed=0;onTap('.dchip',e=>{document.querySelectorAll('.dchip').forEach(x=>x.classList.remove('sel'));e.classList.add('sel');sel=e;pop()});
+ onTap('.house',e=>{if(!sel){teach('اضغط على رقم أولاً، ثم على بيته 👆','think');return}
+  if(sel.dataset.w===e.dataset.w){e.querySelector('.hslot').textContent=sel.textContent;sel.remove();sel=null;placed++;good();
+   if(placed===2){teach(`أحسنت! 🎉 ${N(t)} يسكن في بيت العشرات، و ${N(o)} يسكن في بيت الآحاد`,'happy');d()}else teach('صحيح! 👏 والآن الرقم الآخر','happy')}
+  else{bad();teach('انتبه 😊 في العدد: الرقم الأيسر ⬅️ للعشرات، والرقم الأيمن ➡️ للآحاد','think')}})}
+function housesValue(n,d){const t=Math.floor(n/10),o=n%10;stageHTML(housesHTML(t,o)+`<div id="hvEq"></div>`);let seen={};
+ onTap('.house',e=>{const w=e.dataset.w;if(seen[w])return;seen[w]=1;e.querySelector('.hval').innerHTML=(w==='t'?blocks(t*10):blocks(o))+`<b style="font-size:24px">قيمته ${N(w==='t'?t*10:o)}</b>`;pop();
+  say(w==='t'?`${nw(t)} عشرات، قيمته ${nw(t*10)}`:`${nw(o)} آحاد، قيمته ${nw(o)}`);
+  if(seen.t&&seen.o){$('#hvEq').innerHTML=eqHTML([N(n),'=',N(t*10),'+',N(o)]);teach(`رائع! الرقم ${N(t)} قيمته ${N(t*10)}، والرقم ${N(o)} قيمته ${N(o)}. إذن ${N(n)} = ${N(t*10)} + ${N(o)} 🎉`,'happy');good();d()}})}
+function miniChart(glowTens){let h='<div class="hc" style="max-width:420px">';for(let n=1;n<=100;n++){const r=Math.floor((n-1)/10);h+=`<div class="${glowTens&&n%10===0?'tapw hct':''}" data-n="${n}" style="background:hsl(${r*36},90%,88%)${glowTens&&n%10===0?';box-shadow:0 0 0 3px #ffd60a;animation:pulse .8s infinite alternate':''}">${N(n)}</div>`}return h+'</div>'}
+function tensTapW(d){stageHTML(miniChart(true));let c=0;onTap('.hct',e=>{if(e.classList.contains('tens'))return;c++;e.classList.add('tens');e.style.animation='none';pop();say(nw(+e.dataset.n));
+ if(c===10){teach('أحسنت! ١٠، ٢٠، ٣٠ ... ١٠٠ 🎉 كل صف ينتهي بعشرة جديدة','happy');good();d()}})}
+const ORDA=['🐰','🐻','🐸','🐱','🐼'];
+function queueHTML(okIdx){return `<div class="line"><span class="flag" style="font-size:46px">🍦</span>${ORDA.map((a,i)=>`<div class="slot ch" ${i===okIdx?'data-ok="1"':''} data-i="${i}" style="background:transparent"><span class="an" style="font-size:44px">${a}</span><span class="lab" style="font-size:14px"></span></div>`).join('')}</div><p class="muted">🍦 محلّ المثلّجات</p>`}
+function orderTapW(d){stageHTML(queueHTML(-1));let nx=0;onTap('.slot',e=>{const i=+e.dataset.i;if(i<nx)return;
+ if(i===nx){e.classList.add('right');e.querySelector('.lab').textContent=ORD[i];say(ORD[i]);pop();nx++;if(nx===5){teach('ممتاز! 🎉 الأول، الثاني، الثالث، الرابع، الخامس','happy');good();d()}}
+ else{bad();teach(`ابدأ من الأقرب إلى المحلّ 🍦 من هو ${ORD[nx]}؟`,'think')}})}
+function shapeTour(d){const items=[['🚪','rect'],['🕐','circle'],['🍕','triangle'],['🖼️','square']];
+ stageHTML(`<div class="row">${items.map(([e,k])=>`<div class="tour" data-k="${k}"><span class="em">${e}</span><div class="tsh"></div></div>`).join('')}</div>`);let seen={},c=0;
+ onTap('.tour',e=>{const k=e.dataset.k;if(seen[k])return;seen[k]=1;c++;const s=SH2.find(x=>x.k===k);e.querySelector('.tsh').innerHTML=shapeSVG(k,SCOL[c],60)+`<b style="display:block;font-size:20px">${s.n}</b>`;say(s.n);pop();e.classList.add('right');
+  if(c===4){teach('رائع! 👀 الأشكال حولنا في كل مكان: في البيت والمدرسة والشارع','happy');good();d()}})}
+function polyW(k,d){const P=k==='triangle'?[[100,18],[182,168],[18,168]]:[[28,28],[172,28],[172,172],[28,172]],n=P.length,nm=k==='triangle'?'المثلث':'المربع';
+ let svg=`<svg viewBox="-10 -10 220 200" width="230" style="overflow:visible"><polygon points="${P.map(p=>p.join(',')).join(' ')}" fill="${k==='triangle'?'#ffe0f0':'#dbe8ff'}"/>`;
+ for(let i=0;i<n;i++){const a=P[i],b=P[(i+1)%n];svg+=`<line class="vs" id="vs${i}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#b9a8e8" stroke-width="9" stroke-linecap="round"/><line data-side="${i}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="transparent" stroke-width="34" style="cursor:pointer"/>`}
+ P.forEach((p,i)=>svg+=`<circle data-corner="${i}" cx="${p[0]}" cy="${p[1]}" r="15" fill="#fff" stroke="#3d2c5e" stroke-width="4" style="cursor:pointer"/>`);svg+='</svg>';
+ stageHTML(`<div class="row">${svg}</div><div class="row"><span class="vcard" style="background:var(--pink)" id="sdc">الأضلاع: ٠</span><span class="vcard o" id="crc">الرؤوس: ٠</span></div>`);let sd={},cr={},a=0,b=0;
+ const fin=()=>{if(a===n&&b===n){teach(`${nm} له ${N(n)} أضلاع و ${N(n)} رؤوس 🎉${k==='square'?' وأضلاعه الأربعة متساوية في الطول!':''}`,'happy');good();confetti(25);d()}};
+ onTap('[data-side]',e=>{const i=e.dataset.side;if(sd[i])return;sd[i]=1;a++;$('#vs'+i).setAttribute('stroke','#ff5fa2');$('#sdc').textContent='الأضلاع: '+N(a);say('ضلع '+nw(a));pop();fin()});
+ onTap('[data-corner]',e=>{const i=e.dataset.corner;if(cr[i])return;cr[i]=1;b++;e.setAttribute('fill','#ff9f1c');$('#crc').textContent='الرؤوس: '+N(b);say('رأس '+nw(b));pop();fin()})}
+function tapNamesW(list,d){stageHTML(`<div class="row">${list.map(([k,t],i)=>`<div class="tour" data-i="${i}">${shapeSVG(k,SCOL[i*3],100)}<div class="cap" style="font-weight:800;min-height:28px"></div></div>`).join('')}</div>`);let c=0,seen={};
+ onTap('.tour',e=>{const i=+e.dataset.i;if(seen[i])return;seen[i]=1;c++;e.querySelector('.cap').textContent=list[i][1];say(list[i][1]);e.classList.add('right');pop();if(c===list.length){teach('أحسنت! 👏 تعرّفت على كل الأشكال المستوية','happy');good();d()}})}
+function matchW(d){const ob=shuffle([['⚽','sphere'],['🎲','cube'],['🥫','cyl'],['🍦','cone']]),so=shuffle(SH3.slice());
+ stageHTML(`<div class="row">${ob.map(([e,k])=>`<div class="tour mo" data-k="${k}"><span class="em">${e}</span></div>`).join('')}</div><div style="text-align:center;font-size:28px">⬇️</div>
+ <div class="row">${so.map((s,i)=>`<div class="tour ms" data-k="${s.k}">${shapeSVG(s.k,SCOL[i+3],64)}<b style="display:block">${s.n}</b></div>`).join('')}</div>`);let sel=null,c=0;
+ onTap('.mo',e=>{if(e.classList.contains('right'))return;document.querySelectorAll('.mo').forEach(x=>x.style.borderColor='');e.style.borderColor='var(--pink)';sel=e;pop()});
+ onTap('.ms',e=>{if(e.classList.contains('right'))return;if(!sel){teach('اضغط على الشيء في الأعلى أولاً 👆','think');return}
+  if(sel.dataset.k===e.dataset.k){sel.classList.add('right');e.classList.add('right');sel.style.borderColor='';const nm=SH3.find(x=>x.k===e.dataset.k).n;say(nm);good();sel=null;c++;
+   if(c===4){teach('ممتاز! 🎉 الكرة ⚽ والمكعب 🎲 والأسطوانة 🥫 والمخروط 🍦','happy');confetti(30);d()}else teach(`صحيح! يشبه ${nm} 👏`,'happy')}
+  else{bad();teach('هممم 🤔 انظر إلى شكله جيداً: هل هو مدوّر؟ هل له رأس مدبّب؟','think')}})}
+const END=nm=>({end:true,say:`أحسنت يا بطل! 🏆 الآن أنت تعرف <b>${nm}</b>. أنا فخورة بك! هل أنت مستعد للتمارين؟ هيا بنا 🚀`,run:d=>{stageHTML('<div class="trophy">🏆</div><div class="row" style="font-size:40px">⭐⭐⭐</div>');good();confetti(70);d()}});
+const Q=(h,v,ok,r,w)=>d=>chooseW(h+opts3(v,ok),r,w,d);
+
+const INTRO={
+ cmp:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. تعرّف على صديقنا <b>التمساح الجائع</b> 🐊! هو يحب الأكل كثيراً، لذلك يفتح فمه دائماً نحو <b>المجموعة الأكبر</b>.',run:d=>{stageHTML(`<div class="row"><span style="font-size:110px;display:inline-block;animation:bob 2s infinite">🐊</span><span style="font-size:60px">🍎🍎🍎</span></div>`);d()}},
+  {say:'عندنا ٥ تفاحات 🍎 وتفاحتان 🍎. اضغط على المجموعة التي سيأكلها التمساح 😋',run:d=>chooseW(`<div class="row">${[[5,1],[2,0]].map(([n,ok])=>`<div class="ch pk" ${ok?'data-ok="1"':''}><div class="group">${groupHTML(n,'🍎')}</div></div>`).join('')}</div>`,'نعم! ٥ أكبر من ٢ 🐊 والتمساح يفتح فمه نحو الخمسة هكذا: <b>٥ &gt; ٢</b>','هممم 🤔 التمساح يحب الأكثر! عُدّ التفاحات في كل مجموعة',d)},
+  {say:'وإذا كانت المجموعتان <b>متساويتين</b>؟ 🤷 التمساح يحتار ولا يفتح فمه، فنضع علامة <b>يساوي (=)</b>. اضغط على العلامة الصحيحة',run:d=>chooseW(`<div class="row cmprow"><div class="group">${groupHTML(3,'🍓')}</div><div class="group">${groupHTML(3,'🍓')}</div></div><div class="row">${['gt','eq','lt'].map((r,i)=>`<button class="opt ch o${i}" ${r==='eq'?'data-ok="1"':''}><span dir="ltr">${GLYPH[r]}</span><small>${RELW[r]}</small></button>`).join('')}</div>`,'ممتاز! ٣ = ٣ ⚖️ متساويتان تماماً','انظر جيداً 👀 في كل مجموعة ٣ فراولات، إنهما متساويتان',d)},
+  {say:'للأعداد الكبيرة نقارن <b class="cT">العشرات</b> أولاً 🔵. أيّهما أكبر: ٤٢ أم ٢٤؟ اضغط عليه',run:d=>chooseW(`<div class="row cmprow">${[[42,1],[24,0]].map(([v,ok])=>`<div class="ch pk col" ${ok?'data-ok="1"':''}>${blocks(v)}<div class="numtag">${N(v)}</div></div>`).join('')}</div>`,'أحسنت! ٤٢ فيه ٤ عشرات، و٢٤ فيه عشرتان فقط 🎉','قارن الأعمدة الزرقاء 🔵 أولاً: أيّ عدد فيه أعمدة أكثر؟',d)},
+  {say:'دورك الآن 😊 اختر الرمز المناسب بين ٧ و ٩',run:d=>chooseW(`<div class="row cmprow"><div class="numtag">${N(7)}</div><div class="sym">؟</div><div class="numtag" style="background:var(--pink)">${N(9)}</div></div><div class="row">${['gt','lt','eq'].map((r,i)=>`<button class="opt ch o${i}" ${r==='lt'?'data-ok="1"':''}><span dir="ltr">${GLYPH[r]}</span><small>${RELW[r]}</small></button>`).join('')}</div>`,'رائع! ٧ أصغر من ٩، وفم التمساح مفتوح نحو التسعة 🐊','تذكّر: فم التمساح مفتوح نحو العدد الأكبر 😊',d)},
+  END('المقارنة: أكبر، أصغر، يساوي')],
+ add:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. الجمع يعني أن <b>نضمّ</b> الأشياء معاً 🤝. معي ٣ بالونات 🎈 ومع صديقتي بالونان. اضغط على «ضمّها معاً»',run:d=>{stageHTML(`<div class="row" id="mg"><div class="group">${groupHTML(3,'🎈')}</div><div class="opsign">+</div><div class="group">${groupHTML(2,'🎈')}</div></div><div class="row"><button class="btn p" id="mgB">🤝 ضمّها معاً</button></div>`);
+   $('#mgB').onclick=()=>{$('#mg').innerHTML=`<div class="group" style="max-width:320px">${groupHTML(5,'🎈')}</div>`;$('#mgB').remove();good();teach('صارت كلها معاً في مكان واحد! 🎈 اضغط «التالي» لنعدّها','happy');d()}}},
+  {say:'هيا نعدّ البالونات كلها، اضغط على كل بالون 🎈',run:d=>tapCount(5,'🎈',d,()=>{$('#inStage').insertAdjacentHTML('beforeend',eqHTML([N(3),'+',N(2),'=',N(5)]));teach('٣ + ٢ = ٥ 🎉 علامة <b>+</b> تعني نضيف، وعلامة <b>=</b> تعني الناتج','happy')})},
+  {say:'طريقة ذكية 🐸: نبدأ من العدد الأكبر ونقفز للأمام. الضفدع على ٦، ونريد ٦ + ٣. اضغط «اقفز» ثلاث مرات',run:d=>frogW(6,3,1,()=>{teach('وصل الضفدع إلى ٩! إذن ٦ + ٣ = ٩ 🎉','happy');good();d()})},
+  {say:'وللأعداد الكبيرة: نجمع <b class="cO">الآحاد</b> مع الآحاد أولاً، ثم <b class="cT">العشرات</b> مع العشرات. لنجمع ٢٣ + ١٤ معاً',run:d=>bigOpW(23,14,'+',d)},
+  {say:'دورك الآن 😊 كم ٤ + ٣؟',run:Q(`<div class="row"><div class="group">${groupHTML(4,'🍊')}</div><div class="opsign">+</div><div class="group">${groupHTML(3,'🍊')}</div></div>`,[6,7,8],7,'صحيح! ٤ + ٣ = ٧ 👏','عُدّ البرتقالات كلها معاً 😊')},
+  END('الجمع')],
+ sub:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. الطرح يعني أن <b>نأخذ</b> بعض الأشياء 👋. على الشجرة ٦ عصافير 🐦. اضغط على عصفورين ليطيرا',run:d=>flyW(6,2,d)},
+  {say:'نكتب ما حدث هكذا 👇 علامة <b>−</b> تعني نأخذ، والباقي هو الناتج',run:d=>{stageHTML(`<div class="row"><div class="group" style="max-width:320px">${groupHTML(6,'🐦',{crossFrom:4})}</div></div>`+eqHTML([N(6),'−',N(2),'=',N(4)]));d()}},
+  {say:'طريقة أخرى 🐸: نقفز <b>للخلف</b> على خط الأعداد. الضفدع على ٨، ونريد ٨ − ٣. اضغط «اقفز» ثلاث مرات',run:d=>frogW(8,3,-1,()=>{teach('وصل الضفدع إلى ٥! إذن ٨ − ٣ = ٥ 🎉','happy');good();d()})},
+  {say:'وللأعداد الكبيرة: نطرح <b class="cO">الآحاد</b> من الآحاد أولاً، ثم <b class="cT">العشرات</b> من العشرات. لنحسب ٤٧ − ٢٣',run:d=>bigOpW(47,23,'-',d)},
+  {say:'دورك الآن 😊 كم ٩ − ٤؟',run:Q(`<div class="row"><div class="group" style="max-width:300px">${groupHTML(9,'🍎',{crossFrom:5})}</div></div>`,[4,5,6],5,'صحيح! ٩ − ٤ = ٥ 👏','عُدّ التفاحات التي لم تُشطب ✖ فقط 😊')},
+  END('الطرح')],
+ place:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. اليوم سنتعرّف على صديقين مهمّين جداً: <b class="cO">الآحاد</b> 🟠 و<b class="cT">العشرات</b> 🔵',run:d=>{stageHTML(`<div class="row" style="gap:30px"><div class="col"><span class="bigcube" style="width:50px;height:50px"></span><b class="cO" style="font-size:24px">آحاد</b></div><div class="col">${blocks(10)}<b class="cT" style="font-size:24px">عشرات</b></div></div>`);d()}},
+  {say:'هذا مكعّب صغير، نسمّيه <b class="cO">واحداً</b>. اضغط على المكعّبات واحداً واحداً لنعدّها معاً 👆',run:d=>tapCount(10,'cube',d)},
+  {say:'عندنا عشرة مكعّبات. ماذا لو ربطناها معاً؟ 🪢 اضغط على زر «اربطها»',run:d=>{stageHTML(`<div class="row" id="bund" style="gap:6px">${'<span class="bigcube"></span>'.repeat(10)}</div><div class="row"><button class="btn v" id="bundBtn">🪢 اربطها معاً</button></div>`);
+   $('#bundBtn').onclick=()=>{$('#bund').innerHTML=`<div class="col">${blocks(10)}<b class="cT" style="font-size:24px">عشرة واحدة = ١٠</b></div>`;$('#bundBtn').remove();good();confetti(20);teach('واو! 😍 صارت <b class="cT">عموداً واحداً</b>. عشرة آحاد = <b class="cT">عشرة واحدة</b>!','happy');d()}}},
+  {say:'نعدّ الأعمدة بالعشرات هكذا: عشرة، عشرون، ثلاثون... اضغط على كل عمود 👆',run:d=>tapRods(4,d)},
+  {say:'سؤال صغير لك 🤔 كم هذا العدد؟ (عُدّ الأعمدة أولاً، ثم المكعّبات)',run:Q(`<div class="row">${blocks(34)}</div>`,[43,34,7],34,'ممتاز! ٣ عشرات و ٤ آحاد = <b>٣٤</b> 🎉','لا بأس 😊 عُدّ الأعمدة: عشرة، عشرون، ثلاثون... ثم أضف المكعّبات')},
+  END('العشرات والآحاد')],
+ pv:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. هل تعرف أن لكل رقم <b>بيتاً</b> يسكن فيه؟ 🏠 نسمّي هذا البيت <b>«المنزلة»</b>. بيت <b class="cT">العشرات</b> على اليسار، وبيت <b class="cO">الآحاد</b> على اليمين',run:d=>{stageHTML(housesHTML());d()}},
+  {say:'هذا العدد <b>٢٥</b>. اضغط على الرقم، ثم اضغط على بيته الصحيح 👆',run:d=>housesPlace(25,d)},
+  {say:'الآن اضغط على كل بيت لترى <b>قيمة</b> الرقم الذي يسكن فيه 👀',run:d=>housesValue(25,d)},
+  {say:'سؤال ذكي 🤔 ما <b>قيمة</b> الرقم ٧ في العدد ٧٣؟',run:Q(digitsHTML(73,{color:true,labels:true}),[7,70,3],70,'صحيح! ٧ في بيت العشرات، فقيمته <b>٧٠</b> 👏','انتبه 😊 الرقم ٧ يسكن في بيت العشرات، فهو ٧ عشرات = سبعون')},
+  {say:'آخر سؤال: اضغط على رقم <b class="cO">الآحاد</b> في العدد ٤٨',run:d=>chooseW(`<div class="dgs"><div class="dgc"><div class="dg ch">${N(4)}</div></div><div class="dgc"><div class="dg ch" data-ok="1">${N(8)}</div></div></div>`,'رائع! ٨ في منزلة الآحاد 🟠 و٤ في منزلة العشرات 🔵','لا، هذا رقم العشرات 😊 الآحاد على اليمين ➡️',d)},
+  END('القيمة المكانية')],
+ n100:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. الأعداد تكبر وتكبر حتى تصل إلى <b>مئة</b> 💯! هذه <b>لوحة المئة</b>، وكل صف فيها عشرة أعداد',run:d=>{stageHTML(miniChart(false));d()}},
+  {say:'انظر إلى آخر عدد في كل صف ✨ إنها العشرات! اضغط على الأعداد المضيئة: ١٠، ٢٠، ٣٠...',run:d=>tensTapW(d)},
+  {say:'<b>العدد التالي</b> يزيد واحداً. ما العدد الذي يأتي بعد ٢٤؟ 🚂',run:Q(trainHTML([23,24,25],2),[23,25,34],25,'ممتاز! بعد ٢٤ يأتي ٢٥ 🚂','العدد التالي يزيد واحداً فقط 😊 ٢٤ ثم...؟')},
+  {say:'سرّ لوحة المئة 🤫: العدد الذي <b>تحت</b> أي عدد يزيد <b>عشرة</b>! ما العدد المخفي تحت ٤٥؟',run:Q(`<div class="hcw">${[34,35,36,44,45,46,54,-1,56].map((v,i)=>`<div class="${i===4?'mid':''}${v<0?' q':''}">${v<0?'؟':N(v)}</div>`).join('')}</div>`,[46,55,65],55,'رائع! ٤٥ + ١٠ = ٥٥ 🎉','تذكّر: العدد الذي تحته يزيد عشرة 😊')},
+  END('الأعداد حتى ١٠٠')],
+ ord:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. الحيوانات تقف في <b>طابور</b> لتشتري المثلّجات 🍦! من يقف قرب المحلّ يشتري أولاً',run:d=>{stageHTML(queueHTML(-1));d()}},
+  {say:'اضغط على الحيوانات <b>بالترتيب</b>، ابدأ من الأقرب إلى المحلّ 🍦 👆',run:d=>orderTapW(d)},
+  {say:'من هو <b>الثالث</b> في الطابور؟ اضغط عليه 👆',run:d=>chooseW(queueHTML(2),'صحيح! 🐸 هو الثالث 🥉','عُدّ من المحلّ 🍦: الأول، الثاني، الثالث...',d)},
+  {say:'ما ترتيب 🐼 في الطابور؟',run:Q(queueHTML(-1).replace(/ch"/g,'"'),['الثاني','الخامس','الرابع'],'الخامس','أحسنت! 🐼 هو الخامس، وهو الأخير أيضاً','عُدّ من المحلّ 🍦 حتى تصل إلى 🐼')},
+  END('الترتيب: الأول والثاني والثالث')],
+ shape:[
+  {say:'أهلاً يا بطل! 👋 أنا <b>المعلّمة نور</b>. الأشكال حولنا في كل مكان! 👀 اضغط على كل صورة لتعرف شكلها',run:d=>shapeTour(d)},
+  {say:'تعرّف على <b>المثلث</b> 🔺. الخط المستقيم نسمّيه <b>ضلعاً</b>، والزاوية المدبّبة نسمّيها <b>رأساً</b>. اضغط على كل ضلع وكل رأس',run:d=>polyW('triangle',d)},
+  {say:'وهذا <b>المربع</b> 🟦. اضغط على أضلاعه ورؤوسه وعُدّها معي',run:d=>polyW('square',d)},
+  {say:'<b>المستطيل</b> له ٤ أضلاع: اثنان طويلان واثنان قصيران. أما <b>الدائرة</b> فمدوّرة، ليس لها أضلاع ولا رؤوس! اضغط على كل شكل',run:d=>tapNamesW([['rect','مستطيل: ٤ أضلاع و ٤ رؤوس'],['circle','دائرة: لا أضلاع ولا رؤوس']],d)},
+  {say:'وهناك أشكال نمسكها بأيدينا نسمّيها <b>مجسّمات</b> 🧊. اضغط على الشيء، ثم على المجسّم الذي يشبهه',run:d=>matchW(d)},
+  {say:'اختبار سريع 😊 اضغط على <b>المربع</b>',run:d=>chooseW(`<div class="row">${shuffle(SH2.slice()).map((s,i)=>`<div class="ch pk" ${s.k==='square'?'data-ok="1"':''}>${shapeSVG(s.k,SCOL[i],80)}</div>`).join('')}</div>`,'ممتاز! المربع أضلاعه الأربعة متساوية 🟦','انظر جيداً 😊 المربع أضلاعه الأربعة متساوية في الطول',d)},
+  END('الأشكال الهندسية')]
+};
+
+/* ========== الدروس ========== */
+function openLesson(id){go(id);({lcount:renderCount,lchart:renderHC,lplace:renderPV,lpv:renderLPV,lcmp:renderLC,ladd:renderLA,lsub:()=>renderLS(true),lord:()=>renderOrd(false),lshape:renderShapes})[id]()}
+let lc=3;
+function renderCount(){$('#cNum').textContent=N(lc);$('#cWord').textContent=nw(lc);$('#cGroup').innerHTML=groupHTML(lc,'⭐')}
+function renderHC(){let h='';for(let n=1;n<=100;n++){const r=Math.floor((n-1)/10);h+=`<div id="hc${n}" style="background:hsl(${r*36},90%,88%)" onclick="hcPick(${n})">${N(n)}</div>`}$('#hc').innerHTML=h;hcPick(1,true)}
+function hcPick(n,silent){document.querySelectorAll('#hc .sel').forEach(e=>e.classList.remove('sel'));$('#hc'+n).classList.add('sel');$('#hcNum').textContent=N(n);$('#hcWord').textContent=nw(n);if(!silent){pop();say(nw(n))}}
+function hcTens(){for(let n=10;n<=100;n+=10)setTimeout(()=>{$('#hc'+n).classList.add('tens');pop()},n*25)}
+function hcClear(){document.querySelectorAll('#hc .tens').forEach(e=>e.classList.remove('tens'))}
+let pvT=3,pvO=5;
+function renderPV(){const n=pvT*10+pvO;$('#pvBlocks').innerHTML=blocks(n);$('#pvTable').innerHTML=pvt(pvT,pvO);$('#pvSent').textContent=`${N(pvT)} عشرات و ${N(pvO)} آحاد = ${N(n)} (${nw(n)})`}
+function pvO_(d){if(d>0){if(pvO===9){if(pvT<9){pvT++;pvO=0;toast('عشرة آحاد = عشرة واحدة 🎉');good()}}else pvO++}else if(pvO>0)pvO--;renderPV();pop()}
+function pvT_(d){pvT=Math.min(9,Math.max(0,pvT+d));renderPV();pop()}
+let cmpA=7,cmpB=4;
+function renderLC(){$('#lcA').innerHTML=groupHTML(cmpA,'🐟');$('#lcB').innerHTML=groupHTML(cmpB,'🐠');
+ $('#lcAn').textContent=N(cmpA);$('#lcBn').textContent=N(cmpB);const r=rel(cmpA,cmpB);
+ const s=$('#lcSym');s.textContent=GLYPH[r];s.classList.remove('done');void s.offsetWidth;s.classList.add('done');
+ const c=$('#croc');c.style.transform=r==='gt'?'scaleX(-1)':'none';c.textContent=r==='eq'?'🤝':'🐊';
+ $('#lcSent').textContent=r==='eq'?`${N(cmpA)} يساوي ${N(cmpB)} ⚖️`:`${N(cmpA)} ${RELW[r]} ${N(cmpB)}`;pop()}
+let addA=2,addB=3;
+function renderLA(){$('#laA').innerHTML=groupHTML(addA,'🍎');$('#laB').innerHTML=groupHTML(addB,'🍊');
+ $('#laAll').innerHTML=addA+addB?groupHTML(addA,'🍎').replace(/<span style="opacity[^<]*<\/span>/,'')+groupHTML(addB,'🍊').replace(/<span style="opacity[^<]*<\/span>/,''):groupHTML(0,'');
+ $('#laEq').innerHTML=eqHTML([N(addA),'+',N(addB),'=',N(addA+addB)]);pop()}
+let subT=6,subOut=0;
+function renderLS(reset){if(reset)subOut=0;let h='';for(let i=0;i<subT;i++)h+=`<span class="obj${reset?' pop':''}${i>=subT-subOut?' out':''}" style="cursor:pointer;animation-delay:${i*.04}s" onclick="flyBird()">🐦</span>`;
+ $('#lsG').innerHTML=h;$('#lsEq').innerHTML=eqHTML([N(subT),'−',N(subOut),'=',N(subT-subOut)])}
+function flyBird(){if(subOut<subT){subOut++;renderLS(false);tone([700,1000],0.07)}if(subOut===subT)toast('طارت كل العصافير! بقي صفر 🕊️')}
+let ordArr=[];
+function renderOrd(sh){if(sh||!ordArr.length)ordArr=shuffle(ANI.slice()).slice(0,10);
+ $('#ordLine').innerHTML=`<div class="line"><span class="flag">🏁</span>${ordArr.map((a,i)=>`<div class="slot pk" style="background:transparent" onclick="ordTap(${i},this)"><span class="an">${a}</span><span class="lab"></span></div>`).join('')}</div>`;
+ $('#ordSay').textContent='اضغط على أي حيوان لتعرف ترتيبه 👆';if(sh)pop()}
+function ordTap(i,el){el.querySelector('.lab').textContent=ORD[i];el.classList.add('right');$('#ordSay').textContent=`${ordArr[i]} هو ${ORD[i]} في الطابور`;say(ORD[i]);pop()}
+function ordAll(){document.querySelectorAll('#ordLine .slot').forEach((s,i)=>setTimeout(()=>{s.querySelector('.lab').textContent=ORD[i];s.classList.add('right');pop()},i*350))}
+function renderShapes(){$('#sh2').innerHTML=SH2.map((s,i)=>`<div class="pk col" onclick="shDetail(0,${i})">${shapeSVG(s.k,SCOL[i],76)}<b>${s.n}</b></div>`).join('');
+ $('#sh3').innerHTML=SH3.map((s,i)=>`<div class="pk col" onclick="shDetail(1,${i})">${shapeSVG(s.k,SCOL[i+4],76)}<b>${s.n}</b></div>`).join('');shDetail(0,2,true)}
+function shDetail(g,i,silent){const s=(g?SH3:SH2)[i];$('#shBig').innerHTML=shapeSVG(s.k,SCOL[(i+g*4)%8],150);$('#shName').textContent=s.n;
+ const info=g?'مجسّم 🧊 نستطيع أن نمسكه بأيدينا':s.k==='circle'?'ليس لها أضلاع ولا رؤوس، وهي مدوّرة ⭕':`عدد الأضلاع: <b>${N(s.s)}</b> &nbsp;|&nbsp; عدد الرؤوس: <b>${N(s.c)}</b>`;
+ $('#shInfo').innerHTML=info+`<div style="font-size:36px;margin-top:6px">${s.ex}</div><div class="muted">أشياء تشبهه من حولنا</div>`;if(!silent){say(s.n);pop()}}
+
+let lpvT=4,lpvO=7;
+function renderLPV(){const n=lpvT*10+lpvO;$('#lpvDigits').innerHTML=digitsHTML(n,{color:true,labels:true});
+ $('#lpvVals').innerHTML=`<div class="vcard t">قيمة الرقم ${N(lpvT)} = ${N(lpvT*10)}</div><div class="vcard o">قيمة الرقم ${N(lpvO)} = ${N(lpvO)}</div>`;
+ $('#lpvAbacus').innerHTML=abacusSVG(lpvT,lpvO,190);$('#lpvSent').textContent=`${N(n)} = ${N(lpvT*10)} + ${N(lpvO)}  (${nw(n)})`;pop()}
+
+/* ========== المرسم ========== */
+const FONT="'Baloo Bhaijaan 2',Tahoma,sans-serif";
+const PAL=['#ff4d6d','#ff9f1c','#ffd60a','#5cc93f','#2ec4b6','#3a86ff','#8338ec','#ff5fa2','#8d5524','#3d2c5e','#9e9e9e','#ffffff'];
+const STAMPS=['⭐','❤️','🌸','🦋','🐱','🍎','🎈','🌈','☀️','🚗','🐟','🍓'];
+const DR={mode:'task',tool:'fill',color:'#ff4d6d',size:14,stamp:'⭐',num:35,task:null,undo:[],bnd:null,force:false};
+let cvP,cvL,pc,lx;
+function initDraw(){if(cvP)return;cvP=$('#cvP');cvL=$('#cvL');pc=cvP.getContext('2d',{willReadFrequently:true});lx=cvL.getContext('2d',{willReadFrequently:true});
+ $('#pal').innerHTML=PAL.map(c=>`<span class="sw" data-c="${c}" style="background:${c}" onclick="setColor('${c}')"></span>`).join('');
+ $('#stamps').innerHTML=STAMPS.map(e=>`<button class="tool" data-st="${e}" onclick="setStamp('${e}')">${e}</button>`).join('');
+ setColor(DR.color);setSize(DR.size);setStamp(DR.stamp);
+ const w=$('#cwrap');let drawing=false,last=null;
+ const pos=e=>{const r=cvP.getBoundingClientRect();return{x:(e.clientX-r.left)*800/r.width,y:(e.clientY-r.top)*600/r.height}};
+ w.addEventListener('pointerdown',e=>{e.preventDefault();const p=pos(e);pushUndo();
+  if(DR.tool==='fill'){floodFill(p.x,p.y,DR.color);pop();return}
+  if(DR.tool==='stamp'){pc.globalCompositeOperation='source-over';pc.font='72px serif';pc.textAlign='center';pc.textBaseline='middle';pc.fillText(DR.stamp,p.x,p.y);pop();return}
+  drawing=true;last=p;try{w.setPointerCapture(e.pointerId)}catch(_){}seg(p,p)});
+ w.addEventListener('pointermove',e=>{if(!drawing)return;const p=pos(e);seg(last,p);last=p});
+ ['pointerup','pointercancel'].forEach(t=>w.addEventListener(t,()=>drawing=false))}
+function seg(a,b){pc.globalCompositeOperation=DR.tool==='eraser'?'destination-out':'source-over';pc.strokeStyle=DR.color;pc.fillStyle=DR.color;
+ const lw=DR.tool==='eraser'?DR.size*2.2:DR.size;pc.lineWidth=lw;pc.lineCap='round';pc.lineJoin='round';
+ if(a.x===b.x&&a.y===b.y){pc.beginPath();pc.arc(a.x,a.y,lw/2,0,7);pc.fill()}else{pc.beginPath();pc.moveTo(a.x,a.y);pc.lineTo(b.x,b.y);pc.stroke()}pc.globalCompositeOperation='source-over'}
+function pushUndo(){DR.undo.push(pc.getImageData(0,0,800,600));if(DR.undo.length>20)DR.undo.shift()}
+function drUndo(){const u=DR.undo.pop();if(u){pc.putImageData(u,0,0);click()}}
+function setColor(c){DR.color=c;document.querySelectorAll('#pal .sw').forEach(e=>e.classList.toggle('on',e.dataset.c===c));if(DR.tool==='eraser'||DR.tool==='stamp')setTool('fill')}
+function setTool(t){DR.tool=t;document.querySelectorAll('#drTools [data-t]').forEach(e=>e.classList.toggle('on',e.dataset.t===t));$('#stamps').style.display=t==='stamp'?'flex':'none';click()}
+function setSize(s){DR.size=s;document.querySelectorAll('#drTools [data-s]').forEach(e=>e.classList.toggle('on',+e.dataset.s===s))}
+function setStamp(e){DR.stamp=e;document.querySelectorAll('#stamps [data-st]').forEach(b=>b.classList.toggle('on',b.dataset.st===e))}
+const hexRgb=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+function floodFill(x,y,hex){const W=800,H=600;x=Math.floor(x);y=Math.floor(y);if(x<0||y<0||x>=W||y>=H)return;
+ const img=pc.getImageData(0,0,W,H),d=img.data,b=DR.bnd?DR.bnd.data:null;const [R_,G_,B_]=hexRgb(hex);const i0=(y*W+x)*4;
+ if(b&&b[i0+3]>80)return;const sr=d[i0],sg=d[i0+1],sb=d[i0+2],sa=d[i0+3];
+ if(sa>250&&Math.abs(sr-R_)<4&&Math.abs(sg-G_)<4&&Math.abs(sb-B_)<4)return;
+ const match=i=>!(b&&b[i+3]>80)&&Math.abs(d[i]-sr)+Math.abs(d[i+1]-sg)+Math.abs(d[i+2]-sb)+Math.abs(d[i+3]-sa)<90;
+ const seen=new Uint8Array(W*H),st=[x,y];
+ while(st.length){const py=st.pop();let px=st.pop(),p=py*W+px;
+  while(px>=0&&!seen[p]&&match(p*4)){px--;p--}px++;p++;let up=false,dn=false;
+  while(px<W&&!seen[p]&&match(p*4)){seen[p]=1;const i=p*4;d[i]=R_;d[i+1]=G_;d[i+2]=B_;d[i+3]=255;
+   if(py>0){const q=p-W;if(!seen[q]&&match(q*4)){if(!up){st.push(px,py-1);up=true}}else up=false}
+   if(py<H-1){const q=p+W;if(!seen[q]&&match(q*4)){if(!dn){st.push(px,py+1);dn=true}}else dn=false}
+   px++;p++}}
+ pc.putImageData(img,0,0)}
+function drSave(){const c=document.createElement('canvas');c.width=800;c.height=600;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,800,600);x.drawImage(cvP,0,0);x.drawImage(cvL,0,0);
+ const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='رسمتي.png';document.body.appendChild(a);a.click();a.remove();toast('تم حفظ رسمتك 🖼️')}
+function openDraw(mode,n,force){initDraw();if(n!=null)DR.num=n;DR.force=!!force;go('draw');setDrMode(mode,true)}
+function setDrMode(m,keep){DR.mode=m;if(!keep)DR.force=false;document.querySelectorAll('#drTabs .tab').forEach(e=>e.classList.toggle('on',e.dataset.m===m));
+ $('#drNumBox').style.display=(m==='trace'||m==='num')?'flex':'none';$('#drNew').style.display=(m==='task')?'':'none';
+ setTool(m==='trace'||m==='free'?'brush':'fill');const go_=()=>newPage();(document.fonts&&document.fonts.ready)?document.fonts.ready.then(go_):go_()}
+function drNum(d){DR.num=d===0?rnd(0,100):Math.min(100,Math.max(0,DR.num+d));newPage()}
+/* رسم القوالب */
+function L(){lx.strokeStyle='#3d2c5e';lx.lineWidth=7;lx.lineJoin='round';lx.lineCap='round';lx.setLineDash([])}
+function txt(t,x,y,size,col='#3d2c5e'){lx.font=`800 ${size}px ${FONT}`;lx.fillStyle=col;lx.textAlign='center';lx.textBaseline='middle';lx.direction='rtl';lx.fillText(t,x,y)}
+function starPath(cx,cy,R,r){lx.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r:R;lx.lineTo(cx+rr*Math.cos(a),cy+rr*Math.sin(a))}lx.closePath()}
+function shapeOutline(k,cx,cy,sc=1){L();lx.beginPath();
+ if(k==='circle')lx.arc(cx,cy,62*sc,0,Math.PI*2);
+ else if(k==='square')lx.rect(cx-58*sc,cy-58*sc,116*sc,116*sc);
+ else if(k==='rect')lx.rect(cx-82*sc,cy-42*sc,164*sc,84*sc);
+ else if(k==='triangle'){lx.moveTo(cx,cy-64*sc);lx.lineTo(cx+70*sc,cy+52*sc);lx.lineTo(cx-70*sc,cy+52*sc);lx.closePath()}
+ lx.stroke();return k==='triangle'?[[cx,cy+14*sc],[cx,cy-8*sc],[cx-20*sc,cy+32*sc],[cx+20*sc,cy+32*sc],[cx,cy+36*sc]]:[[cx,cy],[cx-22*sc,cy],[cx+22*sc,cy],[cx,cy-18*sc],[cx,cy+18*sc]]}
+function solidOutline(k,x,y){L();const E=(cx,cy,rx,ry,a,b)=>{lx.beginPath();lx.ellipse(cx,cy,rx,ry,0,a,b);lx.stroke()};
+ if(k==='cube'){lx.strokeRect(x-60,y-30,90,90);lx.beginPath();lx.moveTo(x-60,y-30);lx.lineTo(x-30,y-60);lx.lineTo(x+60,y-60);lx.lineTo(x+30,y-30);lx.stroke();
+  lx.beginPath();lx.moveTo(x+30,y+60);lx.lineTo(x+60,y+30);lx.lineTo(x+60,y-60);lx.stroke()}
+ if(k==='sphere'){E(x,y,65,65,0,Math.PI*2);lx.lineWidth=4;E(x,y,65,18,0,Math.PI)}
+ if(k==='cyl'){E(x,y-55,55,18,0,Math.PI*2);lx.beginPath();lx.moveTo(x-55,y-55);lx.lineTo(x-55,y+55);lx.moveTo(x+55,y-55);lx.lineTo(x+55,y+55);lx.stroke();E(x,y+55,55,18,0,Math.PI)}
+ if(k==='cone'){lx.beginPath();lx.moveTo(x-55,y+50);lx.lineTo(x,y-75);lx.lineTo(x+55,y+50);lx.stroke();E(x,y+50,55,18,0,Math.PI);lx.setLineDash([6,8]);lx.lineWidth=3;E(x,y+50,55,18,Math.PI,Math.PI*2);lx.setLineDash([])}}
+function newPage(){if(!lx)return;pc.clearRect(0,0,800,600);lx.clearRect(0,0,800,600);DR.undo=[];DR.task=null;$('#drNumV').textContent=N(DR.num);const m=DR.mode;let task='';
+ if(m==='task'){DR.task=makeTask();task=DR.task.text}
+ else if(m==='trace'){const s=N(DR.num),sz=DR.num<10?400:DR.num<100?330:250;lx.font=`800 ${sz}px ${FONT}`;lx.textAlign='center';lx.textBaseline='middle';lx.direction='ltr';
+  lx.fillStyle='#f3eeff';lx.fillText(s,400,280);lx.setLineDash([3,16]);lx.lineWidth=10;lx.lineCap='round';lx.strokeStyle='#a78bfa';lx.strokeText(s,400,280);lx.setLineDash([]);
+  txt(nw(DR.num),400,560,46,'#8338ec');task=`✏️ اكتب العدد ${N(DR.num)} (${nw(DR.num)}) بالفرشاة فوق النقاط`}
+ else if(m==='num'){const n=DR.num;lx.lineWidth=9;lx.strokeStyle='#3d2c5e';lx.lineJoin='round';lx.textAlign='center';lx.textBaseline='middle';lx.direction='ltr';
+  if(n>=10&&n<100){lx.font=`800 380px ${FONT}`;lx.strokeText(N(Math.floor(n/10)),250,270);lx.strokeText(N(n%10),550,270);txt('العشرات',250,540,40,'#3a86ff');txt('الآحاد',550,540,40,'#ff9f1c');
+   task=`🎨 في العدد ${N(n)}: لوّن رقم العشرات بالأزرق 🔵 ورقم الآحاد بالبرتقالي 🟠`}
+  else{lx.font=`800 ${n<10?420:300}px ${FONT}`;lx.strokeText(N(n),400,280);txt(nw(n),400,550,46,'#8338ec');task=`🎨 لوّن العدد ${N(n)} بألوانك الجميلة`}}
+ else if(m==='shapes'){[['circle',100],['square',300],['triangle',500],['rect',700]].forEach(([k,x],i)=>{shapeOutline(k,x,140,k==='rect'?.85:1);txt(SH2.find(s=>s.k===k).n,x,250,34)});
+  [['cube',100],['sphere',300],['cyl',500],['cone',700]].forEach(([k,x])=>{solidOutline(k,x,410);txt(SH3.find(s=>s.k===k).n,x,560,34)});task='🔺 لوّن الأشكال والمجسّمات وتعلّم أسماءها'}
+ else task='🖌️ ارسم ما تحب! جرّب الملصقات ⭐ والألوان';
+ $('#drTask').textContent=task;DR.bnd=lx.getImageData(0,0,800,600)}
+function makeTask(){const type=DR.force?'pv':pick(['count','pv','pv','shape']);const items=[];
+ if(type==='count'){const n=rnd(2,9);for(let i=0;i<10;i++){const cx=100+(i%5)*150,cy=170+Math.floor(i/5)*250;L();starPath(cx,cy,72,32);lx.stroke();
+   items.push({tgt:1,pts:[[cx,cy],[cx,cy-28],[cx+22,cy+8],[cx-22,cy+8],[cx,cy+22]]})}
+  return{type,n,items,text:`⭐ لوّن ${N(n)} من النجوم فقط، ثم اضغط «تحقّق»`}}
+ if(type==='pv'){let n=DR.force?DR.num:rnd(11,99);if(n>99)n=99;const t=Math.floor(n/10),o=n%10;
+  txt('العشرات',230,60,38,'#3a86ff');txt('الآحاد',648,60,38,'#ff9f1c');
+  for(let i=0;i<9;i++){const x=24+i*46,y=105,w=34,h=440;L();lx.strokeRect(x,y,w,h);lx.lineWidth=3;lx.beginPath();
+   for(let k=1;k<10;k++){const yy=y+k*44;lx.moveTo(x,yy);lx.lineTo(x+9,yy);lx.moveTo(x+w-9,yy);lx.lineTo(x+w,yy)}lx.stroke();
+   items.push({kind:'rod',pts:[[x+17,y+110],[x+17,y+220],[x+17,y+330],[x+17,y+60],[x+17,y+390]]})}
+  for(let i=0;i<9;i++){const x=540+(i%3)*76,y=150+Math.floor(i/3)*76;L();lx.strokeRect(x,y,60,60);items.push({kind:'cube',pts:[[x+30,y+30],[x+18,y+18],[x+42,y+42],[x+18,y+42],[x+42,y+18]]})}
+  txt(N(n),648,480,110,'#8338ec');
+  return{type,n,t,o,items,text:`🧱 لوّن العدد ${N(n)}: لوّن ${N(t)} من الأعمدة (عشرات) و ${N(o)} من المكعبات (آحاد)`}}
+ const tg=pick(SH2),cnt=rnd(2,4),others=SH2.filter(x=>x!==tg);let ks=[];for(let i=0;i<cnt;i++)ks.push(tg);while(ks.length<10)ks.push(pick(others));ks=shuffle(ks);
+ const cells=shuffle([...Array(12).keys()]).slice(0,10);
+ cells.forEach((c,i)=>{const cx=100+(c%4)*200,cy=100+Math.floor(c/4)*200;const pts=shapeOutline(ks[i].k,cx,cy,.82);items.push({tgt:ks[i]===tg?1:0,pts})});
+ return{type,tg,items,text:`🔺 لوّن ${tg.pl} فقط، ثم اضغط «تحقّق»`}}
+function isColored(d,pts){let c=0;pts.forEach(([x,y])=>{const i=(Math.floor(y)*800+Math.floor(x))*4;if(d[i+3]>40&&!(d[i]>235&&d[i+1]>235&&d[i+2]>235))c++});return c>=2}
+function checkDraw(){if(DR.mode!=='task'||!DR.task){good();confetti(60);toast(pick(['لوحة رائعة! 🎨','فنان مبدع! 🌈','جميلة جداً! 😍']));return}
+ const d=pc.getImageData(0,0,800,600).data,T=DR.task;let ok=false,msg='';
+ if(T.type==='count'){const c=T.items.filter(it=>isColored(d,it.pts)).length;ok=c===T.n;msg=`لوّنت ${N(c)} من النجوم، والمطلوب ${N(T.n)} 🤔`}
+ else if(T.type==='pv'){const r=T.items.filter(it=>it.kind==='rod'&&isColored(d,it.pts)).length,c=T.items.filter(it=>it.kind==='cube'&&isColored(d,it.pts)).length;
+  ok=r===T.t&&c===T.o;msg=`لوّنت ${N(r)} أعمدة و ${N(c)} مكعبات، والمطلوب ${N(T.t)} عشرات و ${N(T.o)} آحاد 🤔`}
+ else{const miss=T.items.filter(it=>it.tgt&&!isColored(d,it.pts)).length,extra=T.items.filter(it=>!it.tgt&&isColored(d,it.pts)).length;ok=!miss&&!extra;
+  msg=miss?`بقي ${N(miss)} من ${T.tg.pl} بلا تلوين 🤔`:`لوّنت أشكالاً ليست من ${T.tg.pl} 🤔`}
+ if(ok){stars++;updStars();good();confetti(70);toast(pick(PRAISE)+' حصلت على نجمة ⭐');$('#drTask').textContent='🎉 أحسنت! اضغط «صفحة جديدة» لمهمة أخرى';DR.force=false}
+ else{bad();toast(msg)}}
+
+/* ========== لوحة المعلم ========== */
+function openTeacher(){$('#sPer').value=S.perRound;$('#sNum').value=S.eastern?'1':'0';$('#sSnd').checked=S.sound;$('#sMix').checked=S.mixCustom;$('#sIntro').checked=S.forceIntro;renderCList();tPreview();go('teacher')}
+function saveSet(){S.perRound=+$('#sPer').value;S.eastern=$('#sNum').value==='1';S.sound=$('#sSnd').checked;S.mixCustom=$('#sMix').checked;S.forceIntro=$('#sIntro').checked;store.set('settings',S);updStars();renderCList();toast('تم حفظ الإعدادات ✔')}
+function cText(c){return c.type==='add'?`${N(c.a)} + ${N(c.b)}`:c.type==='sub'?`${N(c.a)} − ${N(c.b)}`:`${N(c.a)} ⚖️ ${N(c.b)}`}
+function renderCList(){$('#cCount').textContent=N(custom.length);
+ $('#cList').innerHTML=custom.length?custom.map((c,i)=>`<span class="chip">${cText(c)} <button onclick="delC(${i})">✖</button></span>`).join(''):'<p class="muted" style="width:100%">لا توجد تمارين بعد</p>'}
+function validC(t,a,b){if(!Number.isInteger(a)||!Number.isInteger(b)||a<0||b<0||a>100||b>100)return'الأعداد يجب أن تكون من ٠ إلى ١٠٠';
+ if(t==='sub'&&b>a)return'في الطرح يجب أن يكون العدد الأول أكبر أو يساوي الثاني';if(t==='add'&&a+b>100)return'المجموع يجب ألا يزيد على ١٠٠';return''}
+const parseNum=s=>{s=toWestern(String(s).trim());return s===''?NaN:Number(s)};
+function tPreview(){const t=$('#tType').value,a=parseNum($('#tA').value),b=parseNum($('#tB').value);
+ if(isNaN(a)||isNaN(b)){$('#tPrev').textContent='اكتب العددين لترى شكل التمرين';return}const e=validC(t,a,b);$('#tPrev').textContent=e?('⚠️ '+e):('المعاينة: '+cText({type:t,a,b}))}
+function saveC(){store.set('custom',custom);renderCList()}
+function addCustom(){const t=$('#tType').value,a=parseNum($('#tA').value),b=parseNum($('#tB').value);const e=isNaN(a)||isNaN(b)?'اكتب العددين':validC(t,a,b);
+ if(e){toast(e);bad();return}custom.push({type:t,a,b});saveC();$('#tA').value='';$('#tB').value='';tPreview();good();toast('تمت الإضافة ✔')}
+function genCustom(){const t=$('#tType').value,M=+$('#gMax').value;for(let i=0;i<10;i++){let a,b;
+ if(t==='add'){a=rnd(0,M);b=rnd(0,M-a)}else if(t==='sub'){a=rnd(1,M);b=rnd(0,a)}else{a=rnd(0,M);b=rnd(0,M)}custom.push({type:t,a,b})}saveC();good();toast('أُضيفت ١٠ تمارين 🎲')}
+function addBulk(){let ok=0,badN=0;$('#bulk').value.split(/\n|،|,/).forEach(l=>{l=toWestern(l).replace(/\s+/g,'');if(!l)return;
+  const m=l.match(/^(\d+)([+\-−؟?<>=:])(\d+)$/);if(!m){badN++;return}const a=+m[1],b=+m[3];const t=m[2]==='+'?'add':(m[2]==='-'||m[2]==='−')?'sub':'cmp';
+  if(validC(t,a,b)){badN++;return}custom.push({type:t,a,b});ok++});
+ saveC();$('#bulk').value='';toast(`أُضيف ${N(ok)} تمرين`+(badN?`، وتم تجاهل ${N(badN)} سطر غير صحيح`:''));if(ok)good()}
+function delC(i){custom.splice(i,1);saveC();click()}
+function clearC(){if(!custom.length)return;if(!confirm('حذف كل تمارين المعلم؟'))return;custom=[];saveC();toast('تم الحذف')}
+function exportC(){const b=$('#ioBox');b.style.display='block';b.value=JSON.stringify(custom);b.select();
+ try{navigator.clipboard.writeText(b.value).then(()=>toast('تم نسخ التمارين ✔'),()=>toast('انسخ النص من المربع'))}catch(e){toast('انسخ النص من المربع')}}
+function importC(){const b=$('#ioBox');if(b.style.display!=='block'||!b.value.trim()){b.style.display='block';b.value='';b.focus();toast('الصق النص في المربع ثم اضغط استيراد مرة أخرى');return}
+ try{const arr=JSON.parse(b.value);let n=0;arr.forEach(c=>{if(c&&['add','sub','cmp'].includes(c.type)&&!validC(c.type,+c.a,+c.b)){custom.push({type:c.type,a:+c.a,b:+c.b});n++}});
+  saveC();b.value='';b.style.display='none';toast(`تم استيراد ${N(n)} تمرين ✔`);good()}catch(e){toast('النص غير صحيح ⚠️');bad()}}
+function resetAll(){if(!confirm('هل تريد تصفير النجوم والتقدّم في المستويات؟'))return;stars=0;prog={};introDone={};store.set('intro',introDone);store.set('prog',prog);updStars();toast('تم التصفير')}
+
+updStars();renderHome();$('#inTeacher').innerHTML=teacherSVG();$('#pT').innerHTML=teacherSVG();
+try{speechSynthesis.getVoices()}catch(e){}
+</script>
+</body>
+</html>
